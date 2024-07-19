@@ -16,7 +16,7 @@ public class ControladorCliente implements IControlador<Cliente> {
 
 
     @Override
-    public Cliente exibir(Cliente objeto) {
+    public Cliente exibir(String objeto) {
         return clienteDAO.exibirCadastro(objeto);
     }
 
