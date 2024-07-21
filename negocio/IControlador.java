@@ -1,9 +1,10 @@
 package negocio;
 
 public interface IControlador<T> {
-    T exibir(String uk);
+    T cadastro(String uk);
     void cadastrar(T objeto);
     void alterar(String uk);
     void deletar(String uk);
+    void  listaCadastros();
 
 }

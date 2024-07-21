@@ -1,6 +1,7 @@
 package persistencia;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public interface IDAO<T> {
     public T exibirCadastro(T objeto);
@@ -12,5 +13,7 @@ public interface IDAO<T> {
     public void excluir(T objeto);
 
     public void alterarDados(T alterarcadastro);
+
+    public T busca(Predicate<T> filtro);
     
 }

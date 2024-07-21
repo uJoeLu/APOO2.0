@@ -5,13 +5,11 @@ import entidades.Abstract.Pessoa;
 public class Cliente extends Pessoa {
     
     private Pessoa clienteBuilder;
-
+  
     public Cliente(){
-        this.clienteBuilder = new Pessoa();
-    }
-    public static Cliente builder(){
-        return new Cliente();
-    }
+
+    } 
+
     public Cliente nome(String nome){
         this.clienteBuilder.setNome(nome);
         return this;
@@ -28,6 +26,8 @@ public class Cliente extends Pessoa {
     public Cliente telefone(String telefone){
         this.clienteBuilder.setTelefone(telefone);
         return this;
+    }
+    public class builder {
     }
 
     

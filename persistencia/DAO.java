@@ -2,6 +2,7 @@ package persistencia;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class DAO<T> implements IDAO<T>{
@@ -33,6 +34,11 @@ public class DAO<T> implements IDAO<T>{
     @Override
     public T exibirCadastro(T objeto) {
         return listaCadastros.stream().filter(obj -> obj.equals(objeto)).findFirst().orElse(null);
+    }
+
+    @Override
+    public T busca(Predicate<T> filtro) {
+        return listaCadastros.stream().filter(filtro).findFirst().orElse(null);
     }
   
     

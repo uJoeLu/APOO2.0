@@ -6,6 +6,10 @@ public class Pessoa {
     private String email;
     private String telefone;
     
+    public Pessoa(){
+        
+    }
+
     public String getNome() {
         return nome;
     }
