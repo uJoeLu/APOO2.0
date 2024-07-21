@@ -2,12 +2,13 @@ package negocio;
 
 import java.util.function.Predicate;
 
-import entidades.Concrect.Cliente;
+import entidades.Abstract.Pessoa;
+import entidades.Concrect.ClienteBuilder;
 import persistencia.DAO;
 
-public class ControladorCliente implements IControlador<Cliente> {
+public class ControladorCliente implements IControlador<ClienteBuilder> {
     private static final ControladorCliente instacia = new ControladorCliente();
-    private DAO<Cliente> clienteDAO = new DAO<>();
+    private DAO<ClienteBuilder> clienteDAO = new DAO<>();
 
     public static ControladorCliente getInstacia(){
         return instacia;
@@ -17,14 +18,14 @@ public class ControladorCliente implements IControlador<Cliente> {
         }
 
     @Override
-    public Cliente cadastro(String cpf) {
-        Predicate<Cliente> buscaCpf = clientes -> clientes.getCpf().equals(cpf);
+    public ClienteBuilder cadastro(String cpf) {
+        Predicate<ClienteBuilder> buscaCpf = clientes -> clientes.getCpf().equals(cpf);
         return clienteDAO.busca(buscaCpf);
     }
 
     @Override
-    public void cadastrar(Cliente objeto) {
-        clienteDAO.cadastrar(objeto);
+    public void cadastrar(ClienteBuilder cliente) {
+        clienteDAO.cadastrar(cliente);
     }
 
     @Override

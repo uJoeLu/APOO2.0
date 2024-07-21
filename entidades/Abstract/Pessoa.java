@@ -6,6 +6,12 @@ public class Pessoa {
     private String email;
     private String telefone;
     
+    public Pessoa(String nome, String cpf, String email, String telefone){
+        this.nome = null;
+        this.cpf = null;
+        this.email = null;
+        this.telefone = null;
+    }
     public Pessoa(){
         
     }

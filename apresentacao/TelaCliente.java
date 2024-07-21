@@ -2,7 +2,8 @@ package apresentacao;
 
 import java.util.Scanner;
 
-import entidades.Concrect.Cliente;
+import entidades.Abstract.Pessoa;
+import entidades.Concrect.ClienteBuilder;
 import negocio.ControladorCliente;
 
 public class TelaCliente {
@@ -37,55 +38,53 @@ public class TelaCliente {
         }
     }
 
-    private static void cadastrar() {
-        Cliente cliente = new Cliente();
+    public void cadastrar() {
         System.out.println("Informe um nome: ");
-        cliente.nome(sc.nextLine());
         System.out.println("Informe um CPF: ");
-        cliente.cpf(sc.nextLine());
         System.out.println("Informe um email: ");
-        cliente.email(sc.nextLine());
         System.out.println("Informe um telefone: ");
-        cliente.telefone(sc.nextLine());
-        controladorCliente.cadastrar(cliente);
+
+        ClienteBuilder cliente_novo = new ClienteBuilder()
+        .nome(sc.nextLine())
+        .cpf(sc.nextLine())
+        .email(sc.nextLine())
+        .telefone(sc.nextLine())
+        .build();
+        controladorCliente.cadastrar(cliente_novo);
 
     }
 
-    private static void atualizar() {
+    public void atualizar() {
         System.out.println("Informe o CPF do cliente que quer atualizar: ");
-        String cpf = sc.nextLine();
-        Cliente cliente = controladorCliente.cadastro(cpf);
+        ClienteBuilder cliente = controladorCliente.cadastro(sc.nextLine());
         if (cliente == null) {
             System.out.println("Cliente não encontrado");
         } else {
-            System.out.println("Informe um novo nome: ");
-            cliente.nome(sc.nextLine());
-            System.out.println("Informe um novo CPF: ");
-            cliente.cpf(sc.nextLine());
-            System.out.println("Informe um novo email: ");
-            cliente.email(sc.nextLine());
-            System.out.println("Informe um novo telefone: ");
-            cliente.telefone(sc.nextLine());
-            controladorCliente.cadastrar(cliente);
+            ClienteBuilder cliente_novo = new ClienteBuilder()
+            .nome(sc.nextLine())
+            .cpf(sc.nextLine())
+            .email(sc.nextLine())
+            .telefone(sc.nextLine());
+            controladorCliente.cadastrar(cliente_novo);
         }
 
     }
 
-    private static void exibir() {
+    public void exibir() {
         System.out.println("Digite o cpf do cliente: ");
         String cpf = sc.nextLine();
         System.out.println(controladorCliente.cadastro(cpf));
 
     }
 
-    private static void deletar() {
+    public void deletar() {
         System.out.println("Digite o cpf do cliente: ");
         String cpf = sc.nextLine();
         controladorCliente.deletar(cpf);
 
     }
 
-    private static void exibirLista() {
+    public void exibirLista() {
         controladorCliente.listaCadastros();
 
     }
