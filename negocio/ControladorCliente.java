@@ -20,13 +20,13 @@ public class ControladorCliente implements IControlador<Cliente> {
 
     @Override
     public Cliente cadastro(String cpf) {
-        Predicate<Cliente> buscaCpf = cliente -> cliente.getCpf().trim().equals(cpf.trim());
+        Predicate<Cliente> buscaCpf = cliente -> cliente.getCpf().equals(cpf);
         return clienteDAO.busca(buscaCpf);
     }
 
     @Override
     public void cadastrar(Cliente cliente) {
-        clienteDAO.ListaDeCadastro().add(cliente);
+        clienteDAO.inserir(cliente);
     }
 
     @Override

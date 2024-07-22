@@ -10,7 +10,7 @@ public class TelaCliente {
 
     public void operacoesCliente() {
         while (true) {
-            System.out.println("\n1-cadastrar\n2-atualizar\n3-exibir\n4-deletar\n5-exibir lista de cadastros");
+            System.out.println("\n1-cadastrar\n2-atualizar\n3-exibir\n4-deletar\n5-exibir lista de cadastros\n6-sair");
             int opcao = sc.nextInt();
             sc.nextLine(); // Consume the newline
             switch (opcao) {
@@ -29,6 +29,9 @@ public class TelaCliente {
                 case 5:
                     exibirLista();
                     break;
+                case 6:
+                System.out.println("Saindo do sistema...");
+                System.exit(0);
                 default:
                     System.out.println("Opção inválida");
                     break;
