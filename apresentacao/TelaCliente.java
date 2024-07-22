@@ -58,6 +58,10 @@ public class TelaCliente {
         if (cliente == null) {
             System.out.println("Cliente não encontrado");
         } else {
+            System.out.println("Informe o nome: ");
+            System.out.println("Informe o CPF: ");
+            System.out.println("Informe o e-mail: ");
+            System.out.println("Informe o telefone: ");
             ClienteBuilder cliente_novo = new ClienteBuilder()
             .nome(sc.nextLine())
             .cpf(sc.nextLine())
@@ -70,15 +74,13 @@ public class TelaCliente {
 
     public void exibir() {
         System.out.println("Digite o cpf do cliente: ");
-        String cpf = sc.nextLine();
-        System.out.println(controladorCliente.cadastro(cpf));
+        System.out.println(controladorCliente.cadastro(sc.nextLine()));
 
     }
 
     public void deletar() {
         System.out.println("Digite o cpf do cliente: ");
-        String cpf = sc.nextLine();
-        controladorCliente.deletar(cpf);
+        controladorCliente.deletar(sc.nextLine());
 
     }
 
@@ -87,5 +89,3 @@ public class TelaCliente {
 
     }
 }
-
->>>>>>> 6adfaa27075edc42967ed483a78293d2a877299e
