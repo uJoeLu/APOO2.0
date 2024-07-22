@@ -1,10 +1,9 @@
 import java.util.Scanner;
-import entidades.Abstract.Pessoa;
+import entidades.Concrect.Cliente;
 import entidades.Concrect.ClienteBuilder;
 import negocio.ControladorCliente;
 
 public class TelaCliente {
-
     static Scanner sc = new Scanner(System.in);
     static ControladorCliente controladorCliente = ControladorCliente.getInstacia();
 
@@ -12,7 +11,7 @@ public class TelaCliente {
         while (true) {
             System.out.println("\n1-cadastrar\n2-atualizar\n3-exibir\n4-deletar\n5-exibir lista de cadastros");
             int opcao = sc.nextInt();
-            sc.nextLine();
+            sc.nextLine(); // Consume the newline
             switch (opcao) {
                 case 1:
                     cadastrar();
@@ -46,7 +45,7 @@ public class TelaCliente {
         System.out.println("Informe um telefone: ");
         String telefone = sc.nextLine();
 
-        Pessoa cliente_novo = new ClienteBuilder()
+        Cliente cliente_novo = new ClienteBuilder()
             .nome(nome)
             .cpf(cpf)
             .email(email)
@@ -58,7 +57,7 @@ public class TelaCliente {
     public void atualizar() {
         System.out.println("Informe o CPF do cliente que quer atualizar: ");
         String cpf = sc.nextLine();
-        Pessoa cliente = controladorCliente.cadastro(cpf);
+        Cliente cliente = controladorCliente.cadastro(cpf);
         if (cliente == null) {
             System.out.println("Cliente não encontrado");
         } else {
@@ -70,7 +69,7 @@ public class TelaCliente {
             String email = sc.nextLine();
             System.out.println("Informe o telefone: ");
             String telefone = sc.nextLine();
-            Pessoa cliente_novo = new ClienteBuilder()
+            Cliente cliente_novo = new ClienteBuilder()
                 .nome(nome)
                 .cpf(novoCpf)
                 .email(email)
