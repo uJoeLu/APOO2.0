@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import entidades.Concrect.Cliente;
-import entidades.Concrect.ClienteBuilder;
+import negocio.ClienteBuilder;
 import negocio.ControladorCliente;
 
 public class TelaCliente {

@@ -1,5 +1,7 @@
 package negocio;
 
+import entidades.Concrect.Cliente;
+
 public class ClienteBuilder {
     private String nome;
     private String cpf;
