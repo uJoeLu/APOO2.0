@@ -1,5 +1,3 @@
-package apresentacao;
-
 import java.util.Scanner;
 
 import entidades.Abstract.Pessoa;
@@ -89,3 +87,5 @@ public class TelaCliente {
 
     }
 }
+
+>>>>>>> 6adfaa27075edc42967ed483a78293d2a877299e

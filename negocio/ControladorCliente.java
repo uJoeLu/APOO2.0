@@ -15,7 +15,7 @@ public class ControladorCliente implements IControlador<ClienteBuilder> {
     }
 
     private ControladorCliente() {
-        }
+    }
 
     @Override
     public ClienteBuilder cadastro(String cpf) {
