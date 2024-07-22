@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 public interface IDAO<T> {
     public T exibirCadastro(T objeto);
 
-    public void cadastrar(T objeto);
+    public void inserir(T objeto);
 
     public List<T> ListaDeCadastro();
 

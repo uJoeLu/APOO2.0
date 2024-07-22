@@ -3,21 +3,24 @@ package persistencia;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
+
 
 public class DAO<T> implements IDAO<T>{
-    private List<T> listaCadastros = new ArrayList<T>();
+    private List<T> listaCadastros;
+
+    public DAO(List<T> listaCadastros) {
+        this.listaCadastros = listaCadastros;
+    }
 
     
     @Override
-    public void cadastrar(T objeto) {
+    public void inserir(T objeto) {
         listaCadastros.add(objeto);
     }
 
     @Override
     public List<T> ListaDeCadastro() {
-        return listaCadastros.stream()
-        .collect(Collectors.toList());
+        return new ArrayList<>(listaCadastros);
     }
 
     @Override
@@ -38,6 +41,9 @@ public class DAO<T> implements IDAO<T>{
 
     @Override
     public T busca(Predicate<T> filtro) {
+        if(listaCadastros == null){
+            return null;
+        }
         return listaCadastros.stream().filter(filtro).findFirst().orElse(null);
     }
   

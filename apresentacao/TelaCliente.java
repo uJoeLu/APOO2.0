@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 import entidades.Concrect.Cliente;
 import negocio.ClienteBuilder;
@@ -46,11 +47,11 @@ public class TelaCliente {
         String telefone = sc.nextLine();
 
         Cliente cliente_novo = new ClienteBuilder()
-            .nome(nome)
-            .cpf(cpf)
-            .email(email)
-            .telefone(telefone)
-            .build();
+                .nome(nome)
+                .cpf(cpf)
+                .email(email)
+                .telefone(telefone)
+                .build();
         controladorCliente.cadastrar(cliente_novo);
     }
 
@@ -70,11 +71,11 @@ public class TelaCliente {
             System.out.println("Informe o telefone: ");
             String telefone = sc.nextLine();
             Cliente cliente_novo = new ClienteBuilder()
-                .nome(nome)
-                .cpf(novoCpf)
-                .email(email)
-                .telefone(telefone)
-                .build();
+                    .nome(nome)
+                    .cpf(novoCpf)
+                    .email(email)
+                    .telefone(telefone)
+                    .build();
             controladorCliente.cadastrar(cliente_novo);
         }
     }
@@ -92,6 +93,10 @@ public class TelaCliente {
     }
 
     public void exibirLista() {
-        controladorCliente.listaCadastros();
+        List<Cliente> clientes = controladorCliente.listaCadastros();
+        ;
+        for (Cliente cliente : clientes) {
+            System.out.println(cliente);
+        }
     }
 }
