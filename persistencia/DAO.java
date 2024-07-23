@@ -37,6 +37,7 @@ public class DAO<T> implements IDAO<T>{
     @Override
     public T exibirCadastro(T objeto) {
         return listaCadastros.stream().filter(obj -> obj.equals(objeto)).findFirst().orElse(null);
+
     }
 
     @Override

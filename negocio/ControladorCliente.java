@@ -20,8 +20,9 @@ public class ControladorCliente implements IControlador<Cliente> {
 
     @Override
     public Cliente cadastro(String cpf) {
-        Predicate<Cliente> buscaCpf = cliente -> cliente.getCpf().equals(cpf);
-        return clienteDAO.busca(buscaCpf);
+        Predicate<Cliente> buscaCpf = cliente -> cliente.getCpf() == cpf;
+        System.out.println("buscaCPF" + buscaCpf);
+        return clienteDAO.exibirCadastro(clienteDAO.busca(buscaCpf));
     }
 
     @Override
