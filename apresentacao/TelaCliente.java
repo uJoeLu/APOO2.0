@@ -6,13 +6,13 @@ import negocio.ControladorCliente;
 
 public class TelaCliente {
     static Scanner sc = new Scanner(System.in);
-    static ControladorCliente controladorCliente = ControladorCliente.getInstacia();
+    static ControladorCliente controladorCliente = ControladorCliente.getInstancia();
 
     public void operacoesCliente() {
         while (true) {
-            System.out.println("\n1-cadastrar\n2-atualizar\n3-exibir\n4-deletar\n5-exibir lista de cadastros\n6-sair");
+            System.out.println("\n1 - Cadastrar\n2 - Atualizar\n3 - Exibir\n4 - Deletar\n5 - Exibir lista de cadastros\n6 - Sair");
             int opcao = sc.nextInt();
-            sc.nextLine(); // Consume the newline
+            sc.nextLine(); // Consumir nova linha
             switch (opcao) {
                 case 1:
                     cadastrar();
@@ -30,8 +30,8 @@ public class TelaCliente {
                     exibirLista();
                     break;
                 case 6:
-                System.out.println("Saindo do sistema...");
-                System.exit(0);
+                    System.out.println("Saindo do sistema...");
+                    System.exit(0);
                 default:
                     System.out.println("Opção inválida");
                     break;
@@ -79,14 +79,20 @@ public class TelaCliente {
                     .email(email)
                     .telefone(telefone)
                     .build();
-            controladorCliente.cadastrar(cliente_novo);
+            controladorCliente.deletar(cpf); // Deleta o cliente antigo
+            controladorCliente.cadastrar(cliente_novo); // Adiciona o cliente atualizado
         }
     }
 
     public void exibir() {
         System.out.println("Digite o cpf do cliente: ");
         String cpf = sc.nextLine();
-        System.out.println(controladorCliente.cadastro(cpf));
+        Cliente cliente = controladorCliente.cadastro(cpf);
+        if (cliente != null) {
+            System.out.println(cliente);
+        } else {
+            System.out.println("Cliente não encontrado.");
+        }
     }
 
     public void deletar() {
@@ -97,7 +103,6 @@ public class TelaCliente {
 
     public void exibirLista() {
         List<Cliente> clientes = controladorCliente.listaCadastros();
-        ;
         for (Cliente cliente : clientes) {
             System.out.println(cliente);
         }

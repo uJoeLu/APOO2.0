@@ -1,50 +1,41 @@
 package negocio;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import entidades.Concrect.Cliente;
 import persistencia.DAO;
+import entidades.Concrect.Cliente;
 
-public class ControladorCliente implements IControlador<Cliente> {
-    private static final ControladorCliente instacia = new ControladorCliente();
-    private DAO<Cliente> clienteDAO;
+import java.util.List;
 
-    public static ControladorCliente getInstacia(){
-        return instacia;
-    }
+public class ControladorCliente {
+    private static ControladorCliente instancia;
+    private DAO<Cliente> dao;
 
     private ControladorCliente() {
-        this.clienteDAO = new DAO<>(new ArrayList<>());
+        this.dao = new DAO<>();
     }
 
-    @Override
-    public Cliente cadastro(String cpf) {
-        Predicate<Cliente> buscaCpf = cliente -> cliente.getCpf() == cpf;
-        System.out.println("buscaCPF" + buscaCpf);
-        return clienteDAO.exibirCadastro(clienteDAO.busca(buscaCpf));
+    public static ControladorCliente getInstancia() {
+        if (instancia == null) {
+            instancia = new ControladorCliente();
+        }
+        return instancia;
     }
 
-    @Override
     public void cadastrar(Cliente cliente) {
-        clienteDAO.inserir(cliente);
+        dao.inserir(cliente);
     }
 
-    @Override
-    public void alterar(String cpf) {
-        clienteDAO.alterarDados(cadastro(cpf));
-
+    public Cliente cadastro(String cpf) {
+        return dao.busca(cliente -> cliente.getCpf().equals(cpf));
     }
 
-    @Override
     public void deletar(String cpf) {
-        clienteDAO.excluir(cadastro(cpf));
+        Cliente cliente = cadastro(cpf);
+        if (cliente != null) {
+            dao.excluir(cliente);
+        }
     }
 
-    @Override
     public List<Cliente> listaCadastros() {
-        return clienteDAO.ListaDeCadastro();
-        
+        return dao.ListaDeCadastro();
     }
-    
 }

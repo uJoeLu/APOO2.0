@@ -7,4 +7,7 @@ public class Cliente extends Pessoa {
         super(nome, cpf, email, telefone);
     }
 
+    public Cliente() {
+        super();
+    }
 }
