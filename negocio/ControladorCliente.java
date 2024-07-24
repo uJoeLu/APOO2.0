@@ -3,6 +3,7 @@ package negocio;
 import persistencia.DAO;
 import entidades.Concrect.Cliente;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorCliente {
@@ -33,9 +34,18 @@ public class ControladorCliente {
         if (cliente != null) {
             dao.excluir(cliente);
         }
+        else{
+            System.err.println("Nenhum cadastro encontrado para este CPF");
+        }
     }
 
-    public List<Cliente> listaCadastros() {
-        return dao.ListaDeCadastro();
+   public List<Cliente> listaCadastros() {
+    List<Cliente> clientes = dao.ListaDeCadastro();
+    if (clientes == null || clientes.isEmpty()) {
+        System.err.println("Não há nenhum cadastro");
+        return new ArrayList<>(); 
+    } else {
+        return clientes;
     }
+}
 }
