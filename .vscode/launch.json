@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        
+
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "servico.DadosObrigatorio",
+            "classpath": [
+                "lib/caelum-stella-core-2.1.2.jar"
+            ]
+        }
+    ]
+}
