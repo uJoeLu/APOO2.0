@@ -1,7 +1,8 @@
 package negocio;
 
-import persistencia.DAO;
 import entidades.Concrect.Cliente;
+import persistencia.DAO;
+import validator.AnaliseCPF;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 public class ControladorCliente {
     private static ControladorCliente instancia;
     private DAO<Cliente> dao;
+    private AnaliseCPF analiseCPF;
 
     private ControladorCliente() {
         this.dao = new DAO<>();
@@ -22,7 +24,11 @@ public class ControladorCliente {
     }
 
     public void cadastrar(Cliente cliente) {
+
+        analiseCPF.validacao(cliente.getCpf());
         dao.inserir(cliente);
+ 
+        
     }
 
     public Cliente cadastro(String cpf) {
