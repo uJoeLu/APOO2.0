@@ -1,0 +1,4 @@
+Cliente: joel cadastrado com sucesso
+Cliente: jonas cadastrado com sucesso
+Cliente: joel deletado com sucesso
+Programa encerrado
