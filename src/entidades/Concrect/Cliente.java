@@ -10,4 +10,13 @@ public class Cliente extends Pessoa {
     public Cliente() {
         super();
     }
+
+    public String toString() {
+        return getClass().getSimpleName() +
+                ": nome='" + getNome() + '\'' +
+                ", cpf='" + getCpf() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", telefone='" + getTelefone() + '\'' +
+                '}';
+    }
 }
