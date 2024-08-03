@@ -1,7 +1,9 @@
+import java.io.IOException;
+
 import apresentacao.TelaCliente;
 
 public class Home {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         imprimirMensagemDeBoasVindas();
         TelaCliente telaCliente = new TelaCliente();
         telaCliente.operacoesCliente();

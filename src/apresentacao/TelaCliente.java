@@ -1,5 +1,6 @@
 package apresentacao;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 import entidades.Concrect.Cliente;
@@ -10,7 +11,7 @@ public class TelaCliente {
     static Scanner sc = new Scanner(System.in);
     static ControladorCliente controladorCliente = ControladorCliente.getInstancia();
 
-    public void operacoesCliente() {
+    public void operacoesCliente() throws IOException{
         while (true) {
             System.out.println("\n1 - Cadastrar\n2 - Atualizar\n3 - Exibir\n4 - Deletar\n5 - Exibir lista de cadastros\n6 - Sair");
             int opcao = sc.nextInt();
@@ -41,7 +42,7 @@ public class TelaCliente {
         }
     }
 
-    public void cadastrar() {
+    public void cadastrar() throws IOException {
         System.out.println("Informe um nome: ");
         String nome = sc.nextLine();
         System.out.println("Informe um CPF: ");
@@ -60,7 +61,7 @@ public class TelaCliente {
         controladorCliente.cadastrar(cliente_novo);
     }
 
-    public void atualizar() {
+    public void atualizar() throws IOException {
         System.out.println("Informe o CPF do cliente que quer atualizar: ");
         String cpf = sc.nextLine();
         Cliente cliente = controladorCliente.cadastro(cpf);

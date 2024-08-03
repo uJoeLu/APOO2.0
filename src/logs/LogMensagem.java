@@ -1,14 +1,24 @@
 package logs;
 
-import java.util.logging.Logger;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
-public class LogMensagem implements Log{
-    private static final Logger logger = Logger.getLogger(LogMensagem.class.getName());
-
+public class LogMensagem implements Log {
 
     @Override
-    public void log(String message) {
-        logger.info(message);
+    public void log(String message) throws IOException {
+        try {
+            File file = new File("src\\logs\\LOG.txt");
+            FileWriter writer = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(writer);
+            bw.write(message);
+            bw.newLine();
+            bw.flush();
+
+        }catch(IOException e){
+            throw new IOException("Erro a gerar log");
+        }
     }
-    
 }

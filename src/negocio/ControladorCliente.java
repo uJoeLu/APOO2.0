@@ -1,14 +1,17 @@
 package negocio;
 
 import entidades.Concrect.Cliente;
+import logs.LogMensagem;
 import persistencia.DAO;
 import validator.AnaliseCPF;
 
+import java.io.IOException;
 import java.util.List;
 
 public class ControladorCliente {
     private static ControladorCliente instancia;
     private DAO<Cliente> dao;
+    private static final LogMensagem mensagem = new LogMensagem();
 
     private ControladorCliente() {
         this.dao = new DAO<>();
@@ -21,10 +24,11 @@ public class ControladorCliente {
         return instancia;
     }
 
-    public void cadastrar(Cliente cliente) {
+    public void cadastrar(Cliente cliente) throws IOException {
         AnaliseCPF analise = new AnaliseCPF();
         analise.validacao(cliente.getCpf());
         dao.inserir(cliente);
+        mensagem.log("Cliente: "+cliente.getNome() + " cadastrado");              
  
     }
 
