@@ -4,13 +4,11 @@ import entidades.Concrect.Cliente;
 import persistencia.DAO;
 import validator.AnaliseCPF;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorCliente {
     private static ControladorCliente instancia;
     private DAO<Cliente> dao;
-    private AnaliseCPF analiseCPF;
 
     private ControladorCliente() {
         this.dao = new DAO<>();
@@ -24,11 +22,10 @@ public class ControladorCliente {
     }
 
     public void cadastrar(Cliente cliente) {
-
-        analiseCPF.validacao(cliente.getCpf());
+        AnaliseCPF analise = new AnaliseCPF();
+        analise.validacao(cliente.getCpf());
         dao.inserir(cliente);
  
-        
     }
 
     public Cliente cadastro(String cpf) {
@@ -39,17 +36,16 @@ public class ControladorCliente {
         Cliente cliente = cadastro(cpf);
         if (cliente != null) {
             dao.excluir(cliente);
+        }else{
+            throw new Error("CPF informa não encontrado");
         }
-        else{
-            System.err.println("Nenhum cadastro encontrado para este CPF");
-        }
+
     }
 
    public List<Cliente> listaCadastros() {
     List<Cliente> clientes = dao.ListaDeCadastro();
     if (clientes == null || clientes.isEmpty()) {
-        System.err.println("Não há nenhum cadastro");
-        return new ArrayList<>(); 
+        throw new Error("Nenhum cliente cadastrado");
     } else {
         return clientes;
     }
