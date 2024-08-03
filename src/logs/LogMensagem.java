@@ -6,19 +6,23 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class LogMensagem implements Log {
+    
+    private File file = new File("src\\logs\\LOG.txt");
+    private FileWriter fw;
+    private BufferedWriter bw;
+
+    public LogMensagem() throws IOException{
+        fw = new FileWriter(file, true);
+        bw = new BufferedWriter(fw);
+    }
 
     @Override
     public void log(String message) throws IOException {
-        try {
-            File file = new File("src\\logs\\LOG.txt");
-            FileWriter writer = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(writer);
-            bw.write(message);
-            bw.newLine();
-            bw.flush();
-
-        }catch(IOException e){
-            throw new IOException("Erro a gerar log");
-        }
+        bw.write(message);
+        bw.newLine();
+        bw.flush();
+    }
+    public void closer() throws IOException{
+        bw.close();
     }
 }
