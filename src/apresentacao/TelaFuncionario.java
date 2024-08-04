@@ -1,18 +1,19 @@
 package apresentacao;
 
-import java.io.IOException;
+import logs.LogMensagem;
+import negocio.ControladorFuncionario;
+import negocio.FuncionarioBuilder;
+
 import java.util.List;
 import java.util.Scanner;
-import entidades.Concrect.Cliente;
-import logs.LogMensagem;
-import negocio.ClienteBuilder;
-import negocio.ControladorCliente;
+import entidades.Concrect.Funcionario;
+import java.io.IOException;
 
-public class TelaCliente {
+public class TelaFuncionario {
     static Scanner sc = new Scanner(System.in);
-    static ControladorCliente controladorCliente = ControladorCliente.getInstancia();
+    static ControladorFuncionario controladorFuncionario = ControladorFuncionario.getInstancia();
 
-    public void operacoesCliente() throws IOException {
+    public void operacoesFuncionario() throws IOException {
         while (true) {
             System.out.println(
                     "\n1 - Cadastrar\n2 - Atualizar\n3 - Exibir\n4 - Deletar\n5 - Exibir lista de cadastros\n6 - Sair");
@@ -40,7 +41,7 @@ public class TelaCliente {
                     new LogMensagem().closer();
                     System.exit(0);
                 default:
-                    System.err.println("Opção inválida");
+                    System.out.println("Opção inválida");
                     break;
             }
         }
@@ -55,26 +56,33 @@ public class TelaCliente {
         String email = sc.nextLine();
         System.out.println("Informe um telefone: ");
         String telefone = sc.nextLine();
+        System.out.println("Informe um cargo: ");
+        String cargo = sc.nextLine();
+        System.out.println("Informe um salario: ");
+        double salario = sc.nextDouble();
+        
 
-        Cliente cliente_novo = new ClienteBuilder()
+        Funcionario funcionario_novo = new FuncionarioBuilder()
                 .nome(nome)
                 .cpf(cpf)
                 .email(email)
                 .telefone(telefone)
+                .cargo(cargo)
+                .salario(salario)
                 .build();
-        if (cliente_novo.equals(controladorCliente.cadastro(cpf))) {
+        if (funcionario_novo.equals(controladorFuncionario.cadastro(cpf))) {
             System.out.println("CPF já cadastrado");
         } else {
-            controladorCliente.cadastrar(cliente_novo);
+            controladorFuncionario.cadastrar(funcionario_novo);
         }
     }
 
     public void atualizar() throws IOException {
-        System.out.println("Informe o CPF do cliente que quer atualizar: ");
+        System.out.println("Informe o CPF do funcionario que quer atualizar: ");
         String cpf = sc.nextLine();
-        Cliente cliente = controladorCliente.cadastro(cpf);
-        if (cliente == null) {
-            System.out.println("Cliente não encontrado");
+        Funcionario funcionario = controladorFuncionario.cadastro(cpf);
+        if (funcionario == null) {
+            System.out.println("Funcionario não encontrado");
         } else {
             System.out.println("Informe o nome: ");
             String nome = sc.nextLine();
@@ -84,44 +92,51 @@ public class TelaCliente {
             String email = sc.nextLine();
             System.out.println("Informe o telefone: ");
             String telefone = sc.nextLine();
-            Cliente cliente_novo = new ClienteBuilder()
+            System.out.println("Informe um cargo: ");
+            String cargo = sc.nextLine();
+            System.out.println("Informe um salario: ");
+            double salario = sc.nextDouble();
+            Funcionario funcionario_novo = new FuncionarioBuilder()
                     .nome(nome)
                     .cpf(novoCpf)
                     .email(email)
                     .telefone(telefone)
+                    .cargo(cargo)
+                    .salario(salario)
                     .build();
-            controladorCliente.deletar(cpf);
-            controladorCliente.cadastrar(cliente_novo);
+            controladorFuncionario.deletar(cpf);
+            controladorFuncionario.cadastrar(funcionario_novo);
         }
     }
 
     public void exibir() {
-        System.out.println("Digite o cpf do cliente: ");
+        System.out.println("Digite o cpf do funcionario: ");
         String cpf = sc.nextLine();
-        Cliente cliente = controladorCliente.cadastro(cpf);
-        if (cliente != null) {
-            System.out.println(cliente);
+        Funcionario funcionario = controladorFuncionario.cadastro(cpf);
+        if (funcionario != null) {
+            System.out.println(funcionario);
         } else {
-            System.out.println("Cliente não encontrado.");
+            System.out.println("Funcionario não encontrado.");
         }
     }
 
     public void deletar() throws IOException {
-        System.out.println("Digite o cpf do cliente: ");
+        System.out.println("Digite o cpf do funcionario: ");
         String cpf = sc.nextLine();
-        if (controladorCliente.cadastro(cpf).equals(null)) {
-            System.out.println("Cliente não encontrado");
+        if (controladorFuncionario.cadastro(cpf).equals(null)) {
+            System.out.println("Funcionario não encontrado");
         } else {
-            controladorCliente.deletar(cpf);
+            controladorFuncionario.deletar(cpf);
         }
     }
 
     public void exibirLista() throws IOException {
-        List<Cliente> clientes = controladorCliente.listaCadastros();
-        if (clientes.isEmpty()) {
-            System.out.println("Nenhum cliente cadastrado.");
+        List<Funcionario> funcionarios = controladorFuncionario.listaCadastros();
+        if (funcionarios.isEmpty()) {
+            System.out.println("Nenhum funcionario cadastrado.");
         } else {
-            clientes.forEach(cliente -> System.out.println(cliente));
+            funcionarios.forEach(funcionario -> System.out.println(funcionario));
         }
     }
+    
 }
