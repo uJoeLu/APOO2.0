@@ -14,6 +14,7 @@ public class Home {
         System.out.println("*                                                     *");
         System.out.println("*******************************************************");
         
+        @SuppressWarnings("resource")
         Scanner sc = new Scanner(System.in);
         TelaCliente telaCliente = new TelaCliente();
         TelaFuncionario telaFuncionario = new TelaFuncionario();
