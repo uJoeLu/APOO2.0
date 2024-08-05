@@ -1,4 +1,6 @@
-retornando ao inicio
-retornando ao inicio
-retornando ao inicio
-retornando ao inicio
+Iniciando o programa
+Iniciando o programa
+Cliente: joel cadastrado com sucesso
+Iniciando o programa
+Cliente: joel cadastrado com sucesso
+Programa encerrado

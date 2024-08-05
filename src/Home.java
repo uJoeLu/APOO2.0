@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Home {
     public static void main(String[] args) throws IOException {
+        new LogMensagem().log("Iniciando o programa");
         System.out.println("*******************************************************");
         System.out.println("*                                                     *");
         System.out.println("*  Bem-vindo ao Sistema de Gerenciamento de Usuários  *");
@@ -26,9 +27,11 @@ public class Home {
 
             case "1":
                 telaCliente.operacoesCliente();
+                new LogMensagem().log("Acessando o sistema de cliente");
                 break;
             case "2":
                 telaFuncionario.operacoesFuncionario();
+                new LogMensagem().log("Acessando o sistema de funcionario");
                 break;
             case "3":
                 System.out.println("Saindo do sistema...");

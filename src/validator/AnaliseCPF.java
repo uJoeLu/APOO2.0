@@ -5,8 +5,13 @@ public class AnaliseCPF implements Verificador{
     CPFValidator cpfValidator = new CPFValidator();
 
     @Override
-    public void validacao(String cpf) {
+    public boolean validacao(String cpf) {
+        try{
             cpfValidator.assertValid(cpf);
+            return true;
+        }catch(Exception e){
+            return false;
+        }
     }
     
 }
