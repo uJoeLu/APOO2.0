@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class LogMensagem implements Log {
+public class LogMensagem implements ILog {
 
     private File file = new File("src\\logs\\LOG.txt");
     private FileWriter fw;
