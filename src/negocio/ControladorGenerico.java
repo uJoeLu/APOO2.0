@@ -10,7 +10,7 @@ public class ControladorGenerico<T> implements IControlador<T> {
     private  final DAO<T> dao;
     private  final ILog loggerLog;
 
-    private ControladorGenerico() {
+    public ControladorGenerico() {
         this.dao = new DAO<>();
         this.loggerLog = new LogMensagem();
     }
