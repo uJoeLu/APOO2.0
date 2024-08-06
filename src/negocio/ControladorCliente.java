@@ -5,7 +5,6 @@ import logs.LogMensagem;
 import persistencia.DAO;
 import validator.AnaliseCPF;
 
-import java.io.IOException;
 import java.util.List;
 
 public class ControladorCliente implements IControlador<Cliente> {
@@ -24,7 +23,7 @@ public class ControladorCliente implements IControlador<Cliente> {
     }
 
     @Override
-    public void cadastrar(Cliente cliente) throws IOException {
+    public void cadastrar(Cliente cliente) {
         AnaliseCPF analise = new AnaliseCPF();
         analise.validacao(cliente.getCpf());
         dao.inserir(cliente);
@@ -39,7 +38,7 @@ public class ControladorCliente implements IControlador<Cliente> {
     }
 
     @Override
-    public void deletar(String cpf) throws IOException {
+    public void deletar(String cpf)  {
         Cliente cliente = cadastro(cpf);
         if (cliente != null) {
             dao.excluir(cliente);
@@ -51,7 +50,7 @@ public class ControladorCliente implements IControlador<Cliente> {
     }
 
     @Override
-    public List<Cliente> listaCadastros() throws IOException {
+    public List<Cliente> listaCadastros()  {
         List<Cliente> clientes = dao.ListaDeCadastro();
         new LogMensagem().log("Apresentando a lista de cadastro");
         return clientes;

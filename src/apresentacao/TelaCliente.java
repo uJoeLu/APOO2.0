@@ -1,6 +1,5 @@
 package apresentacao;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 import entidades.Concrect.Cliente;
@@ -12,7 +11,7 @@ public class TelaCliente {
     static Scanner sc = new Scanner(System.in);
     static ControladorCliente controladorCliente = ControladorCliente.getInstancia();
 
-    public void operacoesCliente() throws IOException {
+    public void operacoesCliente() {
         while (true) {
             System.out.println(
                     "\n1 - Cadastrar\n2 - Atualizar\n3 - Exibir\n4 - Deletar\n5 - Exibir lista de cadastros\n6 - Sair");
@@ -46,7 +45,7 @@ public class TelaCliente {
         }
     }
 
-    public void cadastrar() throws IOException {
+    public void cadastrar() {
         System.out.println("Informe um nome: ");
         String nome = sc.nextLine();
         System.out.println("Informe um CPF: ");
@@ -69,7 +68,7 @@ public class TelaCliente {
         }
     }
 
-    public void atualizar() throws IOException {
+    public void atualizar() {
         System.out.println("Informe o CPF do cliente que quer atualizar: ");
         String cpf = sc.nextLine();
         Cliente cliente = controladorCliente.cadastro(cpf);
@@ -106,7 +105,7 @@ public class TelaCliente {
         }
     }
 
-    public void deletar() throws IOException {
+    public void deletar() {
         System.out.println("Digite o cpf do cliente: ");
         String cpf = sc.nextLine();
         if (controladorCliente.cadastro(cpf).equals(null)) {
@@ -116,7 +115,7 @@ public class TelaCliente {
         }
     }
 
-    public void exibirLista() throws IOException {
+    public void exibirLista() {
         List<Cliente> clientes = controladorCliente.listaCadastros();
         if (clientes.isEmpty()) {
             System.out.println("Nenhum cliente cadastrado.");

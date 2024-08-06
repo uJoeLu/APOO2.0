@@ -7,13 +7,12 @@ import negocio.FuncionarioBuilder;
 import java.util.List;
 import java.util.Scanner;
 import entidades.Concrect.Funcionario;
-import java.io.IOException;
 
 public class TelaFuncionario {
     static Scanner sc = new Scanner(System.in);
     static ControladorFuncionario controladorFuncionario = ControladorFuncionario.getInstancia();
 
-    public void operacoesFuncionario() throws IOException {
+    public void operacoesFuncionario() {
         while (true) {
             System.out.println(
                     "\n1 - Cadastrar\n2 - Atualizar\n3 - Exibir\n4 - Deletar\n5 - Exibir lista de cadastros\n6 - Sair");
@@ -47,7 +46,7 @@ public class TelaFuncionario {
         }
     }
 
-    public void cadastrar() throws IOException {
+    public void cadastrar() {
         System.out.println("Informe um nome: ");
         String nome = sc.nextLine();
         System.out.println("Informe um CPF: ");
@@ -77,7 +76,7 @@ public class TelaFuncionario {
         }
     }
 
-    public void atualizar() throws IOException {
+    public void atualizar() {
         System.out.println("Informe o CPF do funcionario que quer atualizar: ");
         String cpf = sc.nextLine();
         Funcionario funcionario = controladorFuncionario.cadastro(cpf);
@@ -120,7 +119,7 @@ public class TelaFuncionario {
         }
     }
 
-    public void deletar() throws IOException {
+    public void deletar() {
         System.out.println("Digite o cpf do funcionario: ");
         String cpf = sc.nextLine();
         if (controladorFuncionario.cadastro(cpf).equals(null)) {
@@ -130,7 +129,7 @@ public class TelaFuncionario {
         }
     }
 
-    public void exibirLista() throws IOException {
+    public void exibirLista() {
         List<Funcionario> funcionarios = controladorFuncionario.listaCadastros();
         if (funcionarios.isEmpty()) {
             System.out.println("Nenhum funcionario cadastrado.");

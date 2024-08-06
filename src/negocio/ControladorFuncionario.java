@@ -1,6 +1,5 @@
 package negocio;
 
-import java.io.IOException;
 import java.util.List;
 
 import entidades.Concrect.Funcionario;
@@ -23,7 +22,7 @@ public class ControladorFuncionario implements IControlador<Funcionario>{
     }
 
         @Override
-    public void cadastrar(Funcionario funcionario) throws IOException {
+    public void cadastrar(Funcionario funcionario) {
         AnaliseCPF analise = new AnaliseCPF();
         analise.validacao(funcionario.getCpf());
         dao.inserir(funcionario);
@@ -36,7 +35,7 @@ public class ControladorFuncionario implements IControlador<Funcionario>{
 
     }
     @Override
-    public void deletar(String cpf) throws IOException {
+    public void deletar(String cpf) {
         Funcionario funcionario = cadastro(cpf);
         if (funcionario != null) {
             dao.excluir(funcionario);
@@ -45,7 +44,7 @@ public class ControladorFuncionario implements IControlador<Funcionario>{
 
     }
     @Override
-    public List<Funcionario> listaCadastros() throws IOException {
+    public List<Funcionario> listaCadastros() {
         List<Funcionario> funcionarios = dao.ListaDeCadastro();
             new LogMensagem().log("Apresentando a lista de cadastro");
             return funcionarios;
