@@ -1,5 +1,6 @@
 package validator;
 import br.com.caelum.stella.validation.CPFValidator;
+import logs.LogMensagem;
 
 public class AnaliseCPF implements Verificador{
     CPFValidator cpfValidator = new CPFValidator();
@@ -10,6 +11,7 @@ public class AnaliseCPF implements Verificador{
             cpfValidator.assertValid(cpf);
             return true;
         }catch(Exception e){
+            new LogMensagem().log("Erro na validação do cpf");
             return false;
         }
     }
