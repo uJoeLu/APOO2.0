@@ -2,8 +2,11 @@ package validator;
 import br.com.caelum.stella.validation.CPFValidator;
 import logs.LogMensagem;
 
-public class AnaliseCPF implements Verificador{
+public class AnaliseCPF implements IAnaliseCPF{
     CPFValidator cpfValidator = new CPFValidator();
+    public AnaliseCPF(){
+        
+    }
 
     @Override
     public boolean validacao(String cpf) {

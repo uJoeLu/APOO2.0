@@ -1,6 +1,6 @@
 package validator;
 
 
-public interface Verificador {
+public interface IAnaliseCPF {
     boolean validacao(String cpf);
 }

@@ -5,11 +5,13 @@ import java.util.Scanner;
 import entidades.Concrect.Cliente;
 import logs.LogMensagem;
 import negocio.ClienteBuilder;
-import negocio.ControladorCliente;
+import negocio.ClienteCon;
+import negocio.FabricaControler;
+
 
 public class TelaCliente {
     static Scanner sc = new Scanner(System.in);
-    static ControladorCliente controladorCliente = ControladorCliente.getInstancia();
+    ClienteCon controlador = FabricaControler.controladorCliente();
 
     public void operacoesCliente() {
         while (true) {
@@ -61,17 +63,17 @@ public class TelaCliente {
                 .email(email)
                 .telefone(telefone)
                 .build();
-        if (cliente_novo.equals(controladorCliente.cadastro(cpf))) {
+        if (cliente_novo.equals(controlador.cadastro(cpf))) {
             System.out.println("CPF já cadastrado");
         } else {
-            controladorCliente.cadastrar(cliente_novo);
+            controlador.cadastrar(cliente_novo);
         }
     }
 
     public void atualizar() {
         System.out.println("Informe o CPF do cliente que quer atualizar: ");
         String cpf = sc.nextLine();
-        Cliente cliente = controladorCliente.cadastro(cpf);
+        Cliente cliente = controlador.cadastro(cpf);
         if (cliente == null) {
             System.out.println("Cliente não encontrado");
         } else {
@@ -89,15 +91,15 @@ public class TelaCliente {
                     .email(email)
                     .telefone(telefone)
                     .build();
-            controladorCliente.deletar(cpf);
-            controladorCliente.cadastrar(cliente_novo);
+            controlador.deletar(cpf);
+            controlador.cadastrar(cliente_novo);
         }
     }
 
     public void exibir() {
         System.out.println("Digite o cpf do cliente: ");
         String cpf = sc.nextLine();
-        Cliente cliente = controladorCliente.cadastro(cpf);
+        Cliente cliente = controlador.cadastro(cpf);
         if (cliente != null) {
             System.out.println(cliente);
         } else {
@@ -108,15 +110,15 @@ public class TelaCliente {
     public void deletar() {
         System.out.println("Digite o cpf do cliente: ");
         String cpf = sc.nextLine();
-        if (controladorCliente.cadastro(cpf).equals(null)) {
+        if (controlador.cadastro(cpf).equals(null)) {
             System.out.println("Cliente não encontrado");
         } else {
-            controladorCliente.deletar(cpf);
+            controlador.deletar(cpf);
         }
     }
 
     public void exibirLista() {
-        List<Cliente> clientes = controladorCliente.listaCadastros();
+        List<Cliente> clientes = controlador.listaCadastros();
         if (clientes.isEmpty()) {
             System.out.println("Nenhum cliente cadastrado.");
         } else {

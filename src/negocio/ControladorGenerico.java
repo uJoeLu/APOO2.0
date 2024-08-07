@@ -6,11 +6,11 @@ import logs.ILog;
 import logs.LogMensagem;
 import persistencia.DAO;
 
-public class ControladorGenerico<T> implements IControlador<T> {
+public abstract class ControladorGenerico<T> implements IControlador<T> {
     private  final DAO<T> dao;
     private  final ILog loggerLog;
 
-    public ControladorGenerico() {
+    protected ControladorGenerico() {
         this.dao = new DAO<>();
         this.loggerLog = new LogMensagem();
     }
@@ -19,6 +19,7 @@ public class ControladorGenerico<T> implements IControlador<T> {
     @Override
     public void cadastrar(T objeto) {
         try {
+            this.Verificador(objeto);
         dao.inserir(objeto);
         loggerLog.log("Objeto " + objeto.getClass().getSimpleName() + " cadastrado com sucesso!");
         } catch (Exception e) {
@@ -50,5 +51,5 @@ public class ControladorGenerico<T> implements IControlador<T> {
         return cadastros;
 
     }
-
+    protected abstract boolean Verificador(T obj);
 }

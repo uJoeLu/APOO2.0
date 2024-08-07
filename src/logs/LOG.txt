@@ -4,3 +4,9 @@ Cliente: joel cadastrado com sucesso
 Iniciando o programa
 Cliente: joel cadastrado com sucesso
 Programa encerrado
+Iniciando o programa
+Iniciando o programa
+Objeto Funcionario cadastrado com sucesso!
+Iniciando o programa
+Objeto Funcionario cadastrado com sucesso!
+Objeto Cliente cadastrado com sucesso!

@@ -1,13 +1,15 @@
 package negocio;
 
 import entidades.Concrect.Funcionario;
+import validator.AnaliseCPF;
+import validator.IAnaliseCPF;
 
-public class FuncionarioCon {
+public class FuncionarioCon extends ControladorGenerico<Funcionario>{
     private static FuncionarioCon instancia;
-    private ControladorGenerico<Funcionario> controlador;
+    private IAnaliseCPF analise; 
 
-    private FuncionarioCon(){
-        controlador = new ControladorGenerico<Funcionario>();
+    private FuncionarioCon() {
+        this.analise = new AnaliseCPF();
     }
 
     public static FuncionarioCon getInstancia(){
@@ -15,7 +17,18 @@ public class FuncionarioCon {
             instancia = new FuncionarioCon();
             }
         return instancia;
+        
     }
-    
+
+    @Override
+    protected boolean Verificador(Funcionario funcionario) {
+        try{
+            analise.validacao(funcionario.getCpf());
+            return true;
+            } catch (Exception e) {
+                return false;
+            }
+    }
+
     
 }
