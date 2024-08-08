@@ -1,11 +1,16 @@
 package negocio;
 
-public class AdicionalNoturno implements IGratificacao {
+public class AdicionalNoturno extends GratificaoDecoracao {
+
+    public AdicionalNoturno(IGratificacao salario) {
+        super(salario);
+    }
 
     @Override
     public double gratificacao() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'gratificacao'");
+        return (super.gratificacao()*0.20)+super.gratificacao();
     }
+    
+
     
 }
