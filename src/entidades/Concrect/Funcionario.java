@@ -23,6 +23,15 @@ public class Funcionario extends Pessoa {
     public void setSalario(double salario) {
         this.salario = salario;
     }
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
     public String toString() {
         return getClass().getSimpleName() +
                 ": nome='" + getNome() + '\'' +
