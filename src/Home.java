@@ -2,13 +2,9 @@ import java.io.IOException;
 
 import apresentacao.TelaCliente;
 import apresentacao.TelaFuncionario;
-import br.com.caelum.stella.validation.CPFValidator;
-import entidades.Concrect.Funcionario;
-import logs.LogMensagem;
-import negocio.FuncionarioBuilder;
-import negocio.FuncionarioCon;
 
-import java.util.List;
+import logs.LogMensagem;
+
 import java.util.Scanner;
 
 public class Home {
@@ -27,7 +23,7 @@ public class Home {
         TelaFuncionario telaFuncionario = new TelaFuncionario();
 
         System.out.println("\nQual Operação deseja Realizar?");
-        System.out.println("1 - Cadastrar cliente ou 2 - Cadastrar funcionário");
+        System.out.println("1 - Cadastrar cliente \n2 - Cadastrar funcionário");
         String op = sc.next();
         switch (op) {
 
