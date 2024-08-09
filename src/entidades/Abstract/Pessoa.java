@@ -52,7 +52,7 @@ public abstract class Pessoa {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pessoa pessoa = (Pessoa) o;
-        return cpf.equals(pessoa.cpf);
+        return cpf.equals(cpf, pessoa.cpf);
     }
 
     @Override
