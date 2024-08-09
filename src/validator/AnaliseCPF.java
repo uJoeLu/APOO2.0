@@ -4,8 +4,7 @@ import logs.LogMensagem;
 
 public class AnaliseCPF implements IAnaliseCPF{
     CPFValidator cpfValidator = new CPFValidator();
-    public AnaliseCPF(){
-        
+    public AnaliseCPF(){        
     }
 
     @Override

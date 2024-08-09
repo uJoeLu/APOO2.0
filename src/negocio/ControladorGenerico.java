@@ -7,21 +7,22 @@ import logs.LogMensagem;
 import persistencia.DAO;
 
 public abstract class ControladorGenerico<T> implements IControlador<T> {
-    private  final DAO<T> dao;
-    private  final ILog loggerLog;
+    private final DAO<T> dao;
+    private final ILog loggerLog;
 
     protected ControladorGenerico() {
         this.dao = new DAO<>();
         this.loggerLog = new LogMensagem();
     }
 
-
     @Override
     public void cadastrar(T objeto) {
         try {
-            this.Verificador(objeto);
-        dao.inserir(objeto);
-        loggerLog.log("Objeto " + objeto.getClass().getSimpleName() + " cadastrado com sucesso!");
+            if (this.Verificador(objeto)) {
+                dao.inserir(objeto);
+                loggerLog.log("Objeto " + objeto.getClass().getSimpleName() + " cadastrado com sucesso!");
+            }
+
         } catch (Exception e) {
             loggerLog.log("Erro ao cadastrar objeto " + objeto.getClass().getSimpleName());
             loggerLog.log(e.getMessage());
@@ -30,16 +31,16 @@ public abstract class ControladorGenerico<T> implements IControlador<T> {
 
     @Override
     public T cadastro(String cadastro) {
-        return dao.busca(cad -> cad.equals(cadastro));
+        return dao.busca(cad -> cad.equals(cadastro.hashCode()));
     }
 
     @Override
     public void deletar(String del) {
         T obj = cadastro(del);
-        try{
+        try {
             dao.excluir(obj);
             loggerLog.log("Objeto " + obj.getClass().getSimpleName() + " deletado com sucesso");
-        }catch(Exception e){
+        } catch (Exception e) {
             loggerLog.log("Erro ao deletar :" + obj.getClass().getSimpleName());
             loggerLog.log(e.getMessage());
         }
@@ -51,5 +52,6 @@ public abstract class ControladorGenerico<T> implements IControlador<T> {
         return cadastros;
 
     }
+
     protected abstract boolean Verificador(T obj);
 }

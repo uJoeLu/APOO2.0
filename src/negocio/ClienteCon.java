@@ -20,12 +20,7 @@ public class ClienteCon extends ControladorGenerico<Cliente> {
             }
     @Override
     protected boolean Verificador(Cliente cliente) {
-        try{
-            analise.validacao(cliente.getCpf());
-            return true;
-            } catch (Exception e) {
-                return false;
-            }
+        return analise.validacao(cliente.getCpf());
     }
     
 }

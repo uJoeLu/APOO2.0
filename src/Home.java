@@ -2,6 +2,7 @@ import java.io.IOException;
 
 import apresentacao.TelaCliente;
 import apresentacao.TelaFuncionario;
+import br.com.caelum.stella.validation.CPFValidator;
 import entidades.Concrect.Funcionario;
 import logs.LogMensagem;
 import negocio.FuncionarioBuilder;
@@ -18,17 +19,7 @@ public class Home {
         System.out.println("*  Bem-vindo ao Sistema de Gerenciamento de Usuários  *");
         System.out.println("*                                                     *");
         System.out.println("*******************************************************");
-
-        FuncionarioCon con = FuncionarioCon.getInstancia();
-        
-        con.cadastrar(new FuncionarioBuilder().nome("joel").cpf("11647091438").build());
-
-        List<Funcionario> list = con.listaCadastros();
-        for(Funcionario funcionario : list) {
-            System.out.println(funcionario.getNome());
-        }
-        
-        
+      
 
         @SuppressWarnings("resource")
         Scanner sc = new Scanner(System.in);
