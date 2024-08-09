@@ -63,7 +63,7 @@ public class TelaCliente {
                 .email(email)
                 .telefone(telefone)
                 .build();
-        if (cliente_novo.equals(controlador.cadastro(cpf))) {
+        if (controlador.cadastro(cpf) != null) {
             System.out.println("CPF já cadastrado");
         } else {
             controlador.cadastrar(cliente_novo);

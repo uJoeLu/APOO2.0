@@ -1,10 +1,10 @@
 package entidades.Abstract;
 
 public abstract class Pessoa {
-    private String nome;
-    private String cpf;
-    private String email;
-    private String telefone;
+    protected String nome;
+    protected String cpf;
+    protected String email;
+    protected String telefone;
 
     public Pessoa(String nome, String cpf, String email, String telefone) {
         this.nome = nome;

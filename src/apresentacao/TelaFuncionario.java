@@ -70,7 +70,7 @@ public class TelaFuncionario {
                 .cargo(cargo)
                 .salario(salario)
                 .build();
-        if (funcionario_novo.equals(controlador.cadastro(cpf))) {
+        if (controlador.cadastro(cpf) != null) {
             System.out.println("CPF já cadastrado");
         } else {
             controlador.cadastrar(funcionario_novo);
