@@ -7,16 +7,22 @@ import negocio.FuncionarioCon;
 
 import java.util.List;
 import java.util.Scanner;
+
+import Decorador.DecoratorFactory;
+import Decorador.GratificacaoBase;
+import Decorador.IDecoratorFactory;
+import Decorador.IGratificacao;
 import entidades.Concrect.Funcionario;
 
 public class TelaFuncionario {
     static Scanner sc = new Scanner(System.in);
     FuncionarioCon controlador = FabricaControler.controladorFuncionario();
+    IDecoratorFactory factory = new DecoratorFactory();
 
     public void operacoesFuncionario() {
         while (true) {
             System.out.println(
-                    "\n1 - Cadastrar\n2 - Atualizar\n3 - Exibir\n4 - Deletar\n5 - Exibir lista de cadastros\n6 - Sair");
+                    "\n1 - Cadastrar\n2 - Atualizar\n3 - Exibir\n4 - Deletar\n5 - Exibir lista de cadastros\n6 - gratificar\n7 - Sair");
             String opcao = sc.next();
             sc.nextLine();
             switch (opcao) {
@@ -36,6 +42,9 @@ public class TelaFuncionario {
                     exibirLista();
                     break;
                 case "6":
+                    gratificar();
+                    break;
+                case "7":
                     System.out.println("Saindo do sistema...");
                     new LogMensagem().log("Programa encerrado");
                     new LogMensagem().closer();
@@ -60,7 +69,6 @@ public class TelaFuncionario {
         String cargo = sc.nextLine();
         System.out.println("Informe um salario: ");
         double salario = sc.nextDouble();
-        
 
         Funcionario funcionario_novo = new FuncionarioBuilder()
                 .nome(nome)
@@ -138,5 +146,20 @@ public class TelaFuncionario {
             funcionarios.forEach(funcionario -> System.out.println(funcionario));
         }
     }
-    
+
+    public void gratificar() {
+        System.out.println("Digite o cpf do funcionario: ");
+        String cpf = sc.nextLine();
+        Funcionario funcionario = controlador.cadastro(cpf);
+        if (funcionario != null) {
+            IGratificacao salario = new GratificacaoBase(funcionario.getSalario());
+            if(salario != null){
+                IGratificacao maisIsalubridade = factory.Insalubridade(salario);
+                IGratificacao maisPericulosidade = factory.Periculosidade(maisIsalubridade);
+                IGratificacao maisNoturno = factory.AdicionalNoturno(maisPericulosidade);
+                funcionario.setSalario(maisNoturno.getSalario());
+            }
+        }
+        
+    }
 }

@@ -38,8 +38,8 @@ public class Funcionario extends Pessoa {
                 ", cpf='" + getCpf() + '\'' +
                 ", email='" + getEmail() + '\'' +
                 ", telefone='" + getTelefone() + '\'' +
-                ", telefone='" + getCargo() + '\'' +
-                ", telefone='" + getSalario() + '\'' +
+                ", Cargo='" + getCargo() + '\'' +
+                ", Salario='" + getSalario() + '\'' +
                 '}';
     }
 

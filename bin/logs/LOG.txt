@@ -54,3 +54,4 @@ Programa encerrado
 Iniciando o programa
 Objeto Cliente cadastrado com sucesso!
 Programa encerrado
+Iniciando o programa

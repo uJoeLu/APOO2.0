@@ -1,4 +1,4 @@
-package negocio;
+package Decorador;
 
 public class Insalubridade extends GratificaoDecoracao {
 
@@ -7,8 +7,8 @@ public class Insalubridade extends GratificaoDecoracao {
     }
 
     @Override
-    public double gratificacao() {
-        return (super.gratificacao() * 0.40)+super.gratificacao();
+    public double getSalario() {
+        return (super.getSalario() * 0.40)+super.getSalario();
     }
     
 }

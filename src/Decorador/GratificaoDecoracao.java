@@ -1,4 +1,4 @@
-package negocio;
+package Decorador;
 
 public abstract class GratificaoDecoracao implements IGratificacao {
     protected IGratificacao salario;
@@ -9,8 +9,8 @@ public abstract class GratificaoDecoracao implements IGratificacao {
     }
 
     @Override
-    public double gratificacao() {
-        return salario.gratificacao();
+    public double getSalario() {
+        return salario.getSalario();
     }
 
 
