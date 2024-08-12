@@ -154,10 +154,28 @@ public class TelaFuncionario {
         if (funcionario != null) {
             IGratificacao salario = new GratificacaoBase(funcionario.getSalario());
             if(salario != null){
-                IGratificacao maisIsalubridade = factory.Insalubridade(salario);
-                IGratificacao maisPericulosidade = factory.Periculosidade(maisIsalubridade);
-                IGratificacao maisNoturno = factory.AdicionalNoturno(maisPericulosidade);
-                funcionario.setSalario(maisNoturno.getSalario());
+                boolean flag = true;
+                while(flag){
+                    System.out.println("Deseja aplicar qual gratificao:\n1 - Insalubridade\n2 - Periculosidade\3 - Adicional noturno\n4 - Finaliza gratificacao)");
+                    String opcao = sc.next();
+                    switch(opcao){
+                        case "1":
+                        salario = factory.Insalubridade(salario);
+                        break;
+                        case "2":
+                        salario = factory.Periculosidade(salario);
+                        break;
+                        case "3":
+                        salario = factory.AdicionalNoturno(salario);
+                        break;
+                        case "4":
+                        funcionario.setSalario(salario.getSalario());
+                        flag = false;
+                        default:
+                        System.out.println("Opção invalida");
+
+                    }
+                }
             }
         }
         

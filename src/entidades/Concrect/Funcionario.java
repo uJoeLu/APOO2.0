@@ -24,8 +24,8 @@ public class Funcionario extends Pessoa {
         this.salario = salario;
     }
     @Override
-    public boolean equals(Object o) {
-        return super.equals(o);
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
     @Override
     public int hashCode() {

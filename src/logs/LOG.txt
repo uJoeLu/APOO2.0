@@ -57,3 +57,24 @@ Programa encerrado
 Iniciando o programa
 Iniciando o programa
 Objeto Funcionario cadastrado com sucesso!
+Iniciando o programa
+Objeto Funcionario cadastrado com sucesso!
+Programa encerrado
+Iniciando o programa
+Programa encerrado
+Iniciando o programa
+Iniciando o programa
+Objeto Cliente cadastrado com sucesso!
+Iniciando o programa
+Iniciando o programa
+Objeto Cliente cadastrado com sucesso!
+Programa encerrado
+Iniciando o programa
+Objeto Cliente cadastrado com sucesso!
+Programa encerrado
+Iniciando o programa
+Objeto Cliente cadastrado com sucesso!
+Erro na validação do cpf
+Erro na validação do cpf
+Erro na validação do cpf
+Objeto Cliente cadastrado com sucesso!
