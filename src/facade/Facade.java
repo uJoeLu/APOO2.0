@@ -2,6 +2,8 @@ package facade;
 
 import java.util.List;
 
+import entidades.Concrect.Cliente;
+import entidades.Concrect.Funcionario;
 import negocio.ClienteCon;
 import negocio.FabricaControler;
 import negocio.FuncionarioCon;
@@ -16,52 +18,42 @@ public class Facade{
         this.funcionario = FabricaControler.controladorFuncionario();
     }
 
-    @Override
     public void cadastrarCliente(Cliente cliente) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'cadastrarCliente'");
+        this.cliente.cadastrar(cliente);
     }
 
-    @Override
     public void cadastrarFuncionario(Funcionario funcionario) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'cadastrarFuncionario'");
+        this.funcionario.cadastrar(funcionario);
     }
 
-    @Override
+    
     public Cliente buscarCliente(String cpf) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarCliente'");
+        return this.cliente.cadastro(cpf);
     }
 
-    @Override
-    public Funcionario buscarFuncionario(String matricula) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarFuncionario'");
+    
+    public Funcionario buscarFuncionario(String cpf) {
+        return this.funcionario.cadastro(cpf);
     }
 
-    @Override
+    
     public void deletarCliente(String cpf) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletarCliente'");
+        this.cliente.deletar(cpf);
     }
 
-    @Override
-    public void deletarFuncionario(String matricula) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletarFuncionario'");
+    
+    public void deletarFuncionario(String cpf) {
+        this.funcionario.deletar(cpf);
     }
 
-    @Override
+    
     public List<Cliente> exibirClientes() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'exibirClientes'");
+        return this.cliente.listaCadastros();
     }
 
-    @Override
+    
     public List<Funcionario> exibirFuncionarios() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'exibirFuncionarios'");
+        return this.funcionario.listaCadastros();
     }
 
     
