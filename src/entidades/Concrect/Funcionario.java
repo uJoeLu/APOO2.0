@@ -23,10 +23,10 @@ public class Funcionario extends Pessoa {
     public void setSalario(double salario) {
         this.salario = salario;
     }
-    @Override
+    /*@Override
     public boolean equals(Object obj) {
         return super.equals(obj);
-    }
+    }*/
     @Override
     public int hashCode() {
         return super.hashCode();

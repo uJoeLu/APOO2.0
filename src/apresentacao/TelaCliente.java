@@ -110,7 +110,7 @@ public class TelaCliente {
     public void deletar() {
         System.out.println("Digite o cpf do cliente: ");
         String cpf = sc.nextLine();
-        if (controlador.buscarCliente(cpf).equals(null)) {
+        if (controlador.buscarCliente(cpf) == null) {
             System.out.println("Cliente não encontrado");
         } else {
             controlador.deletarCliente(cpf);

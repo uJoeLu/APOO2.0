@@ -31,8 +31,13 @@ public abstract class ControladorGenerico<T> implements IControlador<T> {
 
     @Override
     public T cadastro(String cadastro) {
+        try{
         int hash = cadastro.hashCode();
         return dao.busca(cad -> cad.hashCode() == hash);
+        }catch(Exception e){
+            loggerLog.log("Erro ao buscar objeto" + e.getMessage());
+            return null;
+        }
     }
 
     @Override
