@@ -4,11 +4,13 @@
     // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "java",
             "name": "Run Home.java",
             "request": "launch",
-            "mainClass": "br.edu.ifpe.FormularioDeCadastro.Home"
+            "mainClass": "br.edu.ifpe.FormularioDeCadastro.Home",
+            "classPaths": ["bin"]
         }
     ]
 }
