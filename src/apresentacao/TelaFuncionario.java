@@ -170,6 +170,7 @@ public class TelaFuncionario {
                         case "4":
                         funcionario.setSalario(salario.getSalario());
                         flag = false;
+                        break;
                         default:
                         System.out.println("Opção invalida");
 
