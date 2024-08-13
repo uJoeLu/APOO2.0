@@ -10,7 +10,7 @@
             "name": "Run Home.java",
             "request": "launch",
             "mainClass": "br.edu.ifpe.FormularioDeCadastro.Home",
-            "classPaths": ["bin"]
+            "classPaths": ["bin\\br.edu.ifpe.FormularioDeCadastro"]
         }
     ]
 }
