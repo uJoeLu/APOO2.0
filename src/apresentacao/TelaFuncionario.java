@@ -1,9 +1,7 @@
 package apresentacao;
 
 import logs.LogMensagem;
-import negocio.FabricaControler;
 import negocio.FuncionarioBuilder;
-import negocio.FuncionarioCon;
 
 import java.util.List;
 import java.util.Scanner;
@@ -13,10 +11,11 @@ import Decorador.GratificacaoBase;
 import Decorador.IDecoratorFactory;
 import Decorador.IGratificacao;
 import entidades.Concrect.Funcionario;
+import facade.Facade;
 
 public class TelaFuncionario {
     static Scanner sc = new Scanner(System.in);
-    FuncionarioCon controlador = FabricaControler.controladorFuncionario();
+    Facade controlador = new Facade();
     IDecoratorFactory factory = new DecoratorFactory();
 
     public void operacoesFuncionario() {
@@ -78,17 +77,17 @@ public class TelaFuncionario {
                 .cargo(cargo)
                 .salario(salario)
                 .build();
-        if (controlador.cadastro(cpf) != null) {
+        if (controlador.buscarFuncionario(cpf) != null) {
             System.out.println("CPF já cadastrado");
         } else {
-            controlador.cadastrar(funcionario_novo);
+            controlador.cadastrarFuncionario(funcionario_novo);
         }
     }
 
     public void atualizar() {
         System.out.println("Informe o CPF do funcionario que quer atualizar: ");
         String cpf = sc.nextLine();
-        Funcionario funcionario = controlador.cadastro(cpf);
+        Funcionario funcionario = controlador.buscarFuncionario(cpf);
         if (funcionario == null) {
             System.out.println("Funcionario não encontrado");
         } else {
@@ -112,15 +111,15 @@ public class TelaFuncionario {
                     .cargo(cargo)
                     .salario(salario)
                     .build();
-            controlador.deletar(cpf);
-            controlador.cadastrar(funcionario_novo);
+            controlador.deletarFuncionario(cpf);
+            controlador.cadastrarFuncionario(funcionario_novo);
         }
     }
 
     public void exibir() {
         System.out.println("Digite o cpf do funcionario: ");
         String cpf = sc.nextLine();
-        Funcionario funcionario = controlador.cadastro(cpf);
+        Funcionario funcionario = controlador.buscarFuncionario(cpf);
         if (funcionario != null) {
             System.out.println(funcionario);
         } else {
@@ -131,15 +130,15 @@ public class TelaFuncionario {
     public void deletar() {
         System.out.println("Digite o cpf do funcionario: ");
         String cpf = sc.nextLine();
-        if (controlador.cadastro(cpf).equals(null)) {
+        if (controlador.buscarCliente(cpf).equals(null)) {
             System.out.println("Funcionario não encontrado");
         } else {
-            controlador.deletar(cpf);
+            controlador.deletarFuncionario(cpf);
         }
     }
 
     public void exibirLista() {
-        List<Funcionario> funcionarios = controlador.listaCadastros();
+        List<Funcionario> funcionarios = controlador.exibirFuncionarios();
         if (funcionarios.isEmpty()) {
             System.out.println("Nenhum funcionario cadastrado.");
         } else {
@@ -150,7 +149,7 @@ public class TelaFuncionario {
     public void gratificar() {
         System.out.println("Digite o cpf do funcionario: ");
         String cpf = sc.nextLine();
-        Funcionario funcionario = controlador.cadastro(cpf);
+        Funcionario funcionario = controlador.buscarFuncionario(cpf);
         if (funcionario != null) {
             IGratificacao salario = new GratificacaoBase(funcionario.getSalario());
             if(salario != null){

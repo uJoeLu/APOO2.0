@@ -78,3 +78,8 @@ Erro na validação do cpf
 Erro na validação do cpf
 Erro na validação do cpf
 Objeto Cliente cadastrado com sucesso!
+Iniciando o programa
+Objeto Cliente cadastrado com sucesso!
+Objeto Cliente cadastrado com sucesso!
+Erro na validação do cpf
+Programa encerrado
