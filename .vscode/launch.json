@@ -9,9 +9,8 @@
             "type": "java",
             "name": "Run Home.java",
             "request": "launch",
-            "mainClass": "br.edu.ifpe.FormularioDeCadastro.Home",
-            "classPaths": ["${workspaceFolder}/bin"],
-            "sourcePaths": ["${workspaceFolder}/src"]
+            "mainClass": "${workspaceFolder}/br.edu.ifpe.FormularioDeCadastro.Home",
+            "classPaths": ["bin"]
         }
     ]
 }
