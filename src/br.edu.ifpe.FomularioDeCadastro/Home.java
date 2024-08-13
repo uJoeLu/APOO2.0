@@ -1,14 +1,9 @@
-import java.io.IOException;
 
 import java.util.Scanner;
 
-import apresentacao.TelaCliente;
-import apresentacao.TelaFuncionario;
-import logs.LogMensagem;
-
 
 public class Home {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         new LogMensagem().log("Iniciando o programa");
         System.out.println("*******************************************************");
         System.out.println("*                                                     *");
