@@ -40,6 +40,7 @@ public abstract class ControladorGenerico<T> implements IControlador<T> {
             }else{
                 hash = cpf.hashCode();
             }
+
         return dao.busca(cad -> cad.hashCode() == hash);
         }catch(Exception e){
             loggerLog.log("Erro ao buscar objeto" + e.getMessage());
@@ -67,4 +68,5 @@ public abstract class ControladorGenerico<T> implements IControlador<T> {
     }
 
     protected abstract boolean Verificador(T obj);
+    /* */
 }
