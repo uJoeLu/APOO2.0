@@ -30,9 +30,16 @@ public abstract class ControladorGenerico<T> implements IControlador<T> {
     }
 
     @Override
-    public T cadastro(String cadastro) {
+    public T cadastro(String cpf) {
         try{
-        int hash = cadastro.hashCode();
+            int hash;
+            if(cpf.length() != 11){
+                String [] cpf_sep = cpf.split("[.-]");
+                String cpfFormatado = cpf_sep[0]+cpf_sep[1]+cpf_sep[2]+cpf_sep[3];
+                hash = cpfFormatado.hashCode();
+            }else{
+                hash = cpf.hashCode();
+            }
         return dao.busca(cad -> cad.hashCode() == hash);
         }catch(Exception e){
             loggerLog.log("Erro ao buscar objeto" + e.getMessage());
