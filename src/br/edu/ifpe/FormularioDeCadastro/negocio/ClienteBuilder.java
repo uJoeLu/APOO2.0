@@ -13,7 +13,14 @@ public class ClienteBuilder {
     }
 
     public ClienteBuilder cpf(String cpf) {
-        this.cpf = cpf;
+        String cpfFormatado;
+            if(cpf.length() != 11){
+                String [] cpf_sep = cpf.split("[.-]");
+                cpfFormatado = cpf_sep[0]+cpf_sep[1]+cpf_sep[2]+cpf_sep[3];
+                this.cpf = cpfFormatado;
+            }else{
+                this.cpf = cpf;
+            }
         return this;
     }
 

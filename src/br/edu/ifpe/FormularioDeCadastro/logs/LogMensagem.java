@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class LogMensagem implements ILog {
 
-    private File file = new File("src\\logs\\LOG.txt");
+    private File file = new File("src\\br\\edu\\ifpe\\FormularioDeCadastro\\logs\\LOG.txt");
     private FileWriter fw;
     private BufferedWriter bw;
 

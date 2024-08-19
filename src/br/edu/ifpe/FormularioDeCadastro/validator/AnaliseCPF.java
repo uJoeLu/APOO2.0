@@ -4,7 +4,6 @@ import br.edu.ifpe.FormularioDeCadastro.logs.LogMensagem;
 
 public class AnaliseCPF implements IAnaliseCPF{
     CPFValidator cpfValidator = new CPFValidator();
-    public AnaliseCPF(){}
 
     @Override
     public boolean validacao(String cpf) {
