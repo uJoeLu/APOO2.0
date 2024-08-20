@@ -5,9 +5,10 @@ import java.util.List;
 import br.edu.ifpe.FormularioDeCadastro.logs.ILog;
 import br.edu.ifpe.FormularioDeCadastro.logs.LogMensagem;
 import br.edu.ifpe.FormularioDeCadastro.persistencia.DAO;
+import br.edu.ifpe.FormularioDeCadastro.persistencia.IDAO;
 
 public abstract class ControladorGenerico<T> implements IControlador<T> {
-    private final DAO<T> dao;
+    private final IDAO<T> dao;
     private final ILog loggerLog;
 
     protected ControladorGenerico() {
