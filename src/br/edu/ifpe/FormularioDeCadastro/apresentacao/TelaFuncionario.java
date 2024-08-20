@@ -82,6 +82,9 @@ public class TelaFuncionario {
         } else {
             controlador.cadastrarFuncionario(funcionario_novo);
         }
+        if(controlador.buscarFuncionario(cpf) == null){
+            System.out.println("Funcionário não cadastrado");
+        }
     }
 
     public void atualizar() {

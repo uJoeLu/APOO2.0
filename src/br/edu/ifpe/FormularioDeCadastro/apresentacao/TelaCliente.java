@@ -67,6 +67,9 @@ public class TelaCliente {
         } else {
             controlador.cadastrarCliente(cliente_novo);
         }
+        if(controlador.buscarCliente(cliente_novo.getCpf()) == null){
+            System.out.println("Erro ao cadastrar cliente");
+        }
     }
 
     public void atualizar() {
