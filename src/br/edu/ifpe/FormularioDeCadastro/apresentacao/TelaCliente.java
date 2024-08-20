@@ -69,6 +69,8 @@ public class TelaCliente {
         }
         if(controlador.buscarCliente(cliente_novo.getCpf()) == null){
             System.out.println("Erro ao cadastrar cliente");
+        }else{
+            System.out.println("Cliente cadastrado com sucesso");
         }
     }
 
@@ -97,6 +99,8 @@ public class TelaCliente {
             controlador.cadastrarCliente(cliente_novo);
             if(controlador.buscarCliente(novoCpf) == null){
                 System.out.println("Erro ao atualizar cliente");
+            }else{
+                System.out.println("Cliente atualizado com sucesso");
             }
         }
     }

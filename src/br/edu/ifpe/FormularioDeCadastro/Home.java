@@ -17,32 +17,33 @@ public class Home {
         operacoes();
     }
         public static void operacoes(){
-            Scanner sc = new Scanner(System.in);
-            System.out.println("\nQual Operação deseja Realizar?");
-            System.out.println("1 - Cadastrar cliente \n2 - Cadastrar funcionário\n3 - sair");
-            String op = sc.next();
-            TelaCliente telaCliente = new TelaCliente();
-            TelaFuncionario telaFuncionario = new TelaFuncionario();
+            try (Scanner sc = new Scanner(System.in)) {
+                System.out.println("\nQual Operação deseja Realizar?");
+                System.out.println("1 - Cadastrar cliente \n2 - Cadastrar funcionário\n3 - sair");
+                String op = sc.next();
+                TelaCliente telaCliente = new TelaCliente();
+                TelaFuncionario telaFuncionario = new TelaFuncionario();
 
-            switch (op) {
+                switch (op) {
 
-                case "1":
-                    telaCliente.operacoesCliente();
-                    new LogMensagem().log("Acessando o sistema de cliente");
-                    break;
-                case "2":
-                    telaFuncionario.operacoesFuncionario();
-                    new LogMensagem().log("Acessando o sistema de funcionario");
-                    break;
-                case "3":
-                    System.out.println("Saindo do sistema...");
-                    new LogMensagem().log("Encerrando programa");
-                    new LogMensagem().closer();
-                    break;
-                default:
-                    System.out.println("Opção inválida");
-                    operacoes();
-                    break;
+                    case "1":
+                        telaCliente.operacoesCliente();
+                        new LogMensagem().log("Acessando o sistema de cliente");
+                        break;
+                    case "2":
+                        telaFuncionario.operacoesFuncionario();
+                        new LogMensagem().log("Acessando o sistema de funcionario");
+                        break;
+                    case "3":
+                        System.out.println("Saindo do sistema...");
+                        new LogMensagem().log("Encerrando programa");
+                        new LogMensagem().closer();
+                        break;
+                    default:
+                        System.out.println("Opção inválida");
+                        operacoes();
+                        break;
+                }
             }
     }
 

@@ -84,6 +84,8 @@ public class TelaFuncionario {
         }
         if(controlador.buscarFuncionario(cpf) == null){
             System.out.println("Funcionário não cadastrado");
+        }else{
+            System.out.println("Funcionário cadastrado com sucesso");
         }
     }
 
@@ -118,6 +120,8 @@ public class TelaFuncionario {
             controlador.cadastrarFuncionario(funcionario_novo);
             if(controlador.buscarFuncionario(novoCpf) == null){
                 System.out.println("Funcionário não cadastrado");
+            }else{
+                System.out.println("Funcionário atualizado com sucesso");
             }
         }
     }
@@ -161,7 +165,7 @@ public class TelaFuncionario {
             if(salario != null){
                 boolean flag = true;
                 while(flag){
-                    System.out.println("Deseja aplicar qual gratificao:\n1 - Insalubridade\n2 - Periculosidade\3 - Adicional noturno\n4 - Finaliza gratificacao)");
+                    System.out.println("Deseja aplicar qual gratificao:\n1 - Insalubridade\n2 - Periculosidade\n3 - Adicional noturno\n4 - Finaliza gratificacao");
                     String opcao = sc.next();
                     switch(opcao){
                         case "1":
@@ -183,6 +187,8 @@ public class TelaFuncionario {
                     }
                 }
             }
+        }else{
+            System.out.println("Funcionario não encontrado");
         }
         
     }
