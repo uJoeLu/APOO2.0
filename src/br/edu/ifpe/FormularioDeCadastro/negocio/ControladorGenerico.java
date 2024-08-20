@@ -29,7 +29,7 @@ public abstract class ControladorGenerico<T> implements IControlador<T> {
     public T cadastro(String cpf) {
 
         int hash;
-        if (cpf.length() > 11) {
+        if (cpf.length() == 14) {
             String[] cpf_sep = cpf.split("[.-]");
             String cpfFormatado = cpf_sep[0] + cpf_sep[1] + cpf_sep[2] + cpf_sep[3];
             hash = cpfFormatado.hashCode();

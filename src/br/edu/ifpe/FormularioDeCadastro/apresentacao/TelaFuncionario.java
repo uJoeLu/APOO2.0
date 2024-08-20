@@ -116,6 +116,9 @@ public class TelaFuncionario {
                     .build();
             controlador.deletarFuncionario(cpf);
             controlador.cadastrarFuncionario(funcionario_novo);
+            if(controlador.buscarFuncionario(novoCpf) == null){
+                System.out.println("Funcionário não cadastrado");
+            }
         }
     }
 

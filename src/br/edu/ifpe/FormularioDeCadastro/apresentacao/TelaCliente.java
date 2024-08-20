@@ -95,6 +95,9 @@ public class TelaCliente {
                     .build();
             controlador.deletarCliente(cpf);
             controlador.cadastrarCliente(cliente_novo);
+            if(controlador.buscarCliente(novoCpf) == null){
+                System.out.println("Erro ao atualizar cliente");
+            }
         }
     }
 
