@@ -16,8 +16,7 @@ public class TelaCliente {
         while (true) {
             System.out.println(
                     "\n1 - Cadastrar\n2 - Atualizar\n3 - Exibir\n4 - Deletar\n5 - Exibir lista de cadastros\n6 - Sair");
-            String opcao = sc.next();
-            sc.nextLine();
+            String opcao = sc.nextLine();
             switch (opcao) {
                 case "1":
                     cadastrar();

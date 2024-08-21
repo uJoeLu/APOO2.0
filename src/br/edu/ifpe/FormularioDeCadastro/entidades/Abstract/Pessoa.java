@@ -46,13 +46,7 @@ public abstract class Pessoa {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-   /* @Override
-    public boolean equals(Object obj) {
-        if (this == obj)return true;
-        if (obj == null || getClass() != obj.getClass())return false;
-        Pessoa pessoa = (Pessoa) obj;
-        return super.equals(pessoa.cpf);
-    } */
+
 
     @Override
     public int hashCode() {

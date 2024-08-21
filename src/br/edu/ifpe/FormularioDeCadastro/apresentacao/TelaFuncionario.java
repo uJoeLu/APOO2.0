@@ -22,8 +22,7 @@ public class TelaFuncionario {
         while (true) {
             System.out.println(
                     "\n1 - Cadastrar\n2 - Atualizar\n3 - Exibir\n4 - Deletar\n5 - Exibir lista de cadastros\n6 - gratificar\n7 - Sair");
-            String opcao = sc.next();
-            sc.nextLine();
+            String opcao = sc.nextLine();
             switch (opcao) {
                 case "1":
                     cadastrar();
@@ -56,94 +55,115 @@ public class TelaFuncionario {
     }
 
     public void cadastrar() {
-        System.out.println("Informe um nome: ");
-        String nome = sc.nextLine();
-        System.out.println("Informe um CPF: ");
-        String cpf = sc.nextLine();
-        System.out.println("Informe um email: ");
-        String email = sc.nextLine();
-        System.out.println("Informe um telefone: ");
-        String telefone = sc.nextLine();
-        System.out.println("Informe um cargo: ");
-        String cargo = sc.nextLine();
-        System.out.println("Informe um salario: ");
-        double salario = sc.nextDouble();
-
-        Funcionario funcionario_novo = new FuncionarioBuilder()
-                .nome(nome)
-                .cpf(cpf)
-                .email(email)
-                .telefone(telefone)
-                .cargo(cargo)
-                .salario(salario)
-                .build();
-        if (controlador.buscarFuncionario(cpf) != null) {
-            System.out.println("CPF já cadastrado");
-        } else {
-            controlador.cadastrarFuncionario(funcionario_novo);
-        }
-        if(controlador.buscarFuncionario(cpf) == null){
-            System.out.println("Funcionário não cadastrado");
-        }else{
-            System.out.println("Funcionário cadastrado com sucesso");
-        }
-    }
-
-    public void atualizar() {
-        System.out.println("Informe o CPF do funcionario que quer atualizar: ");
-        String cpf = sc.nextLine();
-        Funcionario funcionario = controlador.buscarFuncionario(cpf);
-        if (funcionario == null) {
-            System.out.println("Funcionario não encontrado");
-        } else {
-            System.out.println("Informe o nome: ");
+        try {
+            System.out.println("Informe um nome: ");
             String nome = sc.nextLine();
-            System.out.println("Informe o CPF: ");
-            String novoCpf = sc.nextLine();
-            System.out.println("Informe o e-mail: ");
+            System.out.println("Informe um CPF: ");
+            String cpf = sc.nextLine();
+            System.out.println("Informe um email: ");
             String email = sc.nextLine();
-            System.out.println("Informe o telefone: ");
+            System.out.println("Informe um telefone: ");
             String telefone = sc.nextLine();
             System.out.println("Informe um cargo: ");
             String cargo = sc.nextLine();
             System.out.println("Informe um salario: ");
-            double salario = sc.nextDouble();
+            double salario = Double.parseDouble(sc.nextLine());
+
             Funcionario funcionario_novo = new FuncionarioBuilder()
                     .nome(nome)
-                    .cpf(novoCpf)
+                    .cpf(cpf)
                     .email(email)
                     .telefone(telefone)
                     .cargo(cargo)
                     .salario(salario)
                     .build();
-            controlador.deletarFuncionario(cpf);
-            controlador.cadastrarFuncionario(funcionario_novo);
-            if(controlador.buscarFuncionario(novoCpf) == null){
-                System.out.println("Funcionário não cadastrado");
-            }else{
-                System.out.println("Funcionário atualizado com sucesso");
+            if (controlador.buscarFuncionario(cpf) != null) {
+                System.out.println("CPF já cadastrado");
+            } else {
+                controlador.cadastrarFuncionario(funcionario_novo);
             }
+            if (controlador.buscarFuncionario(cpf) == null) {
+                System.out.println("Funcionário não cadastrado");
+            } else {
+                System.out.println("Funcionário cadastrado com sucesso");
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao cadastrar funcionario");
+            new LogMensagem().log("Erro ao cadastrar funcionario");
+            operacoesFuncionario();
+        }
+    }
+
+    public void atualizar() {
+        try {
+            System.out.println("Informe o CPF do funcionario que quer atualizar: ");
+            String cpf = sc.nextLine();
+            Funcionario funcionario = controlador.buscarFuncionario(cpf);
+            if (funcionario == null) {
+                System.out.println("Funcionario não encontrado");
+            } else {
+                System.out.println("Informe o nome: ");
+                String nome = sc.nextLine();
+                System.out.println("Informe o CPF: ");
+                String novoCpf = sc.nextLine();
+                System.out.println("Informe o e-mail: ");
+                String email = sc.nextLine();
+                System.out.println("Informe o telefone: ");
+                String telefone = sc.nextLine();
+                System.out.println("Informe um cargo: ");
+                String cargo = sc.nextLine();
+                System.out.println("Informe um salario: ");
+                double salario = sc.nextDouble();
+                Funcionario funcionario_novo = new FuncionarioBuilder()
+                        .nome(nome)
+                        .cpf(novoCpf)
+                        .email(email)
+                        .telefone(telefone)
+                        .cargo(cargo)
+                        .salario(salario)
+                        .build();
+                controlador.deletarFuncionario(cpf);
+                controlador.cadastrarFuncionario(funcionario_novo);
+                if (controlador.buscarFuncionario(novoCpf) == null) {
+                    System.out.println("Funcionário não cadastrado");
+                } else {
+                    System.out.println("Funcionário atualizado com sucesso");
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao atualizar funcionário");
+            operacoesFuncionario();
         }
     }
 
     public void exibir() {
-        System.out.println("Digite o cpf do funcionario: ");
-        String cpf = sc.nextLine();
-        Funcionario funcionario = controlador.buscarFuncionario(cpf);
-        if (funcionario != null) {
-            System.out.println(funcionario);
-        } else {
-            System.out.println("Funcionario não encontrado.");
+        try {
+            System.out.println("Digite o cpf do funcionario: ");
+            String cpf = sc.nextLine();
+            Funcionario funcionario = controlador.buscarFuncionario(cpf);
+            if (funcionario != null) {
+                System.out.println(funcionario);
+            } else {
+                System.out.println("Funcionario não encontrado.");
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao exibir funcionario");
+            new LogMensagem().log("Erro ao exibir funcionario");
         }
     }
 
     public void deletar() {
-        System.out.println("Digite o cpf do funcionario: ");
-        String cpf = sc.nextLine();
-        if (controlador.buscarCliente(cpf).equals(null)) {
-            System.out.println("Funcionario não encontrado");
-        } else {
-            controlador.deletarFuncionario(cpf);
+        try {
+            System.out.println("Digite o cpf do funcionario: ");
+            String cpf = sc.nextLine();
+            if (controlador.buscarCliente(cpf).equals(null)) {
+                System.out.println("Funcionario não encontrado");
+            } else {
+                controlador.deletarFuncionario(cpf);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao deletar funcionario");
+            new LogMensagem().log("Erro ao deletar funcionario");
         }
     }
 
@@ -162,34 +182,35 @@ public class TelaFuncionario {
         Funcionario funcionario = controlador.buscarFuncionario(cpf);
         if (funcionario != null) {
             IGratificacao salario = new GratificacaoBase(funcionario.getSalario());
-            if(salario != null){
+            if (salario != null) {
                 boolean flag = true;
-                while(flag){
-                    System.out.println("Deseja aplicar qual gratificao:\n1 - Insalubridade\n2 - Periculosidade\n3 - Adicional noturno\n4 - Finaliza gratificacao");
-                    String opcao = sc.next();
-                    switch(opcao){
+                while (flag) {
+                    System.out.println(
+                            "Deseja aplicar qual gratificao:\n1 - Insalubridade\n2 - Periculosidade\n3 - Adicional noturno\n4 - Finaliza gratificacao");
+                    String opcao = sc.nextLine();
+                    switch (opcao) {
                         case "1":
-                        salario = factory.Insalubridade(salario);
-                        break;
+                            salario = factory.Insalubridade(salario);
+                            break;
                         case "2":
-                        salario = factory.Periculosidade(salario);
-                        break;
+                            salario = factory.Periculosidade(salario);
+                            break;
                         case "3":
-                        salario = factory.AdicionalNoturno(salario);
-                        break;
+                            salario = factory.AdicionalNoturno(salario);
+                            break;
                         case "4":
-                        funcionario.setSalario(salario.getSalario());
-                        flag = false;
-                        break;
+                            funcionario.setSalario(salario.getSalario());
+                            flag = false;
+                            break;
                         default:
-                        System.out.println("Opção invalida");
-
+                            System.out.println("Opção invalida");
+                            break;
                     }
                 }
             }
-        }else{
+        } else {
             System.out.println("Funcionario não encontrado");
         }
-        
+
     }
 }

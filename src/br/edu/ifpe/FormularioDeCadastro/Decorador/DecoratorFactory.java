@@ -19,8 +19,5 @@ public class DecoratorFactory implements IDecoratorFactory{
         return new AdicionalNoturno(gratificacao);
     }
 
-
-
-
     
 }

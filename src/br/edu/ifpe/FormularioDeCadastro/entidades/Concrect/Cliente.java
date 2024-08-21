@@ -16,11 +16,6 @@ public class Cliente extends Pessoa {
         return super.hashCode();
     }
 
-    /*@Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    } */
-
     public String toString() {
         return getClass().getSimpleName() +
                 ": nome='" + getNome() + '\'' +
