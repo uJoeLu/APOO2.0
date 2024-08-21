@@ -19,6 +19,7 @@ public class Home {
         boolean flag = true;
         while (flag){
         
+            @SuppressWarnings("resource")
             Scanner sc = new Scanner(System.in);
                 System.out.println("\nQual Operação deseja Realizar?");
                 System.out.println("1 - Cadastrar cliente \n2 - Cadastrar funcionário\n3 - sair");
