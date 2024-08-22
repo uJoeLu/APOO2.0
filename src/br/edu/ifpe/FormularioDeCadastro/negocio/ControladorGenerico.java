@@ -28,7 +28,6 @@ public abstract class ControladorGenerico<T> implements IControlador<T> {
 
     @Override
     public T cadastro(String cpf) {
-
         int hash;
         if (cpf.length() == 14) {
             String[] cpf_sep = cpf.split("[.-]");

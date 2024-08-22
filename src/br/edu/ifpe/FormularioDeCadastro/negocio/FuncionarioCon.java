@@ -23,12 +23,7 @@ public class FuncionarioCon extends ControladorGenerico<Funcionario>{
 
     @Override
     protected boolean Verificador(Funcionario funcionario) {
-        try{
-            analise.validacao(funcionario.getCpf());
-            return true;
-            } catch (Exception e) {
-                return false;
-            }
+            return analise.validacao(funcionario.getCpf());
     }
 
     

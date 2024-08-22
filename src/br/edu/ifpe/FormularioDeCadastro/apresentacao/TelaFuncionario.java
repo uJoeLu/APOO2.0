@@ -88,9 +88,7 @@ public class TelaFuncionario {
                 System.out.println("Funcionário cadastrado com sucesso");
             }
         } catch (Exception e) {
-            System.out.println("Erro ao cadastrar funcionario");
-            new LogMensagem().log("Erro ao cadastrar funcionario");
-            operacoesFuncionario();
+            System.out.println("Erro ao cadastrar funcionario, favor inserir um valor, caso nao tenha um salario informar '0'");
         }
     }
 
@@ -156,14 +154,15 @@ public class TelaFuncionario {
         try {
             System.out.println("Digite o cpf do funcionario: ");
             String cpf = sc.nextLine();
-            if (controlador.buscarCliente(cpf).equals(null)) {
+            if (controlador.buscarFuncionario(cpf) == null) {
                 System.out.println("Funcionario não encontrado");
             } else {
                 controlador.deletarFuncionario(cpf);
+                System.out.println("Funcionario deletado com sucesso!");
             }
         } catch (Exception e) {
             System.out.println("Erro ao deletar funcionario");
-            new LogMensagem().log("Erro ao deletar funcionario");
+            new LogMensagem().log("Erro ao deletar funcionario" + e);
         }
     }
 
