@@ -21,7 +21,7 @@ public class TelaFuncionario {
     public void operacoesFuncionario() {
         while (true) {
             System.out.println(
-                    "\n1 - Cadastrar\n2 - Atualizar\n3 - Exibir\n4 - Deletar\n5 - Exibir lista de cadastros\n6 - gratificar\n7 - Sair");
+                    "\n1 - Cadastrar\n2 - Atualizar\n3 - Exibir\n4 - Deletar\n5 - Exibir lista de cadastros\n6 - gratificar\n7 - Menu inicial");
             String opcao = sc.nextLine();
             switch (opcao) {
                 case "1":
@@ -43,9 +43,8 @@ public class TelaFuncionario {
                     gratificar();
                     break;
                 case "7":
-                    System.out.println("Saindo do sistema...");
-                    new LogMensagem().log("Programa encerrado");
-                    new LogMensagem().closer();
+                    System.out.println("Voltando para o menu inicial");
+                    new LogMensagem().log("Fechando operacao funcionario");
                     return;
                 default:
                     System.out.println("Opção inválida");

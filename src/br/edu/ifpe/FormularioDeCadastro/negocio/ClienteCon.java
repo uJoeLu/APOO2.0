@@ -20,7 +20,7 @@ public class ClienteCon extends ControladorGenerico<Cliente> {
             }
     @Override
     protected boolean Verificador(Cliente cliente) {
-        return analise.validacao(cliente.getCpf());
+        return analise.validacao(cliente.getCpf()) & !cliente.getNome().isEmpty();
     }
     
 }
