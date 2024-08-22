@@ -36,7 +36,7 @@ public class TelaCliente {
                     System.out.println("Saindo do sistema...");
                     new LogMensagem().log("Programa encerrado");
                     new LogMensagem().closer();
-                    System.exit(0);
+                    return;
                 default:
                     System.err.println("Opção inválida");
                     break;

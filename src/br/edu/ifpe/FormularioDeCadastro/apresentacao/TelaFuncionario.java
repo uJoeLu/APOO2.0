@@ -46,7 +46,7 @@ public class TelaFuncionario {
                     System.out.println("Saindo do sistema...");
                     new LogMensagem().log("Programa encerrado");
                     new LogMensagem().closer();
-                    System.exit(0);
+                    return;
                 default:
                     System.out.println("Opção inválida");
                     break;

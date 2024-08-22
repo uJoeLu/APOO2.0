@@ -41,6 +41,7 @@ public class Home {
                         System.out.println("Saindo do sistema...");
                         new LogMensagem().log("Encerrando programa");
                         new LogMensagem().closer();
+                        flag = false;
                         break;
                     default:
                         System.out.println("Opção inválida");
