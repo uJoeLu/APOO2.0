@@ -14,7 +14,7 @@ public class TelaCliente {
     public void operacoesCliente() {
         while (true) {
             System.out.println(
-                    "\n1 - Cadastrar\n2 - Atualizar\n3 - Exibir\n4 - Deletar\n5 - Exibir lista de cadastros\n6 - Sair");
+                    "\n1 - Cadastrar\n2 - Atualizar\n3 - Exibir\n4 - Deletar\n5 - Exibir lista de cadastros\n6 - Menu inicial");
             String opcao = sc.nextLine();
             switch (opcao) {
                 case "1":
@@ -33,9 +33,8 @@ public class TelaCliente {
                     exibirLista();
                     break;
                 case "6":
-                    System.out.println("Saindo do sistema...");
-                    new LogMensagem().log("Programa encerrado");
-                    new LogMensagem().closer();
+                    System.out.println("Voltando para o menu inicial");
+                    new LogMensagem().log("Fechando operacao cliente");
                     return;
                 default:
                     System.err.println("Opção inválida");
