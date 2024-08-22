@@ -66,7 +66,7 @@ public class TelaCliente {
         } else {
             controlador.cadastrarCliente(cliente_novo);
         }
-        if(controlador.buscarCliente(cliente_novo.getCpf()) == null){
+        if(controlador.buscarCliente(cliente_novo.getCpf()) == null || cliente_novo.getCpf().isEmpty()){
             System.out.println("Erro ao cadastrar cliente");
         }else{
             System.out.println("Cliente cadastrado com sucesso");
@@ -96,7 +96,7 @@ public class TelaCliente {
                     .build();
             controlador.deletarCliente(cpf);
             controlador.cadastrarCliente(cliente_novo);
-            if(controlador.buscarCliente(novoCpf) == null){
+            if(controlador.buscarCliente(novoCpf) == null || cliente_novo.getCpf().isEmpty()){
                 System.out.println("Erro ao atualizar cliente");
             }else{
                 System.out.println("Cliente atualizado com sucesso");

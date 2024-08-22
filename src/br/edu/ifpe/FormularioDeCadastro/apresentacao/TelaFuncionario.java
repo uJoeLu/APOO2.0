@@ -79,16 +79,13 @@ public class TelaFuncionario {
                     .build();
             if (controlador.buscarFuncionario(cpf) != null) {
                 System.out.println("CPF já cadastrado");
-            } else {
+            }else{
                 controlador.cadastrarFuncionario(funcionario_novo);
-            }
-            if (controlador.buscarFuncionario(cpf) == null) {
-                System.out.println("Funcionário não cadastrado");
-            } else {
                 System.out.println("Funcionário cadastrado com sucesso");
             }
         } catch (Exception e) {
-            System.out.println("Erro ao cadastrar funcionario, favor inserir um valor, caso nao tenha um salario informar '0'");
+            System.out.println("Erro ao cadastrar funcionario, favor inserir um valor, caso não tenha um salário informar '0'");
+            operacoesFuncionario();
         }
     }
 
@@ -111,7 +108,7 @@ public class TelaFuncionario {
                 System.out.println("Informe um cargo: ");
                 String cargo = sc.nextLine();
                 System.out.println("Informe um salario: ");
-                double salario = sc.nextDouble();
+                double salario = Double.parseDouble(sc.nextLine());
                 Funcionario funcionario_novo = new FuncionarioBuilder()
                         .nome(nome)
                         .cpf(novoCpf)
@@ -129,7 +126,7 @@ public class TelaFuncionario {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Erro ao atualizar funcionário");
+            System.out.println("Erro ao atualizar funcionário, favor inserir um valor, caso não tenha um salário informar '0'");
             operacoesFuncionario();
         }
     }
