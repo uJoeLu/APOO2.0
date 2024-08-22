@@ -8,7 +8,7 @@ public class FuncionarioBuilder {
     private String email;
     private String telefone;
     private String cargo;
-    private double salario;
+    private double salario = 0.0;
 
     public FuncionarioBuilder nome(String nome) {
         this.nome = nome;
