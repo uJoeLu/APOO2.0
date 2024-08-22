@@ -56,10 +56,14 @@ public class TelaFuncionario {
 
     public void cadastrar() {
         try {
-            System.out.println("Informe um nome: ");
+            System.out.println("*Informe um nome: ");
             String nome = sc.nextLine();
-            System.out.println("Informe um CPF: ");
+            System.out.println("*Informe um CPF: ");
             String cpf = sc.nextLine();
+            if (controlador.buscarFuncionario(cpf) != null) {
+                System.out.println("CPF já cadastrado");
+                return;
+            }
             System.out.println("Informe um email: ");
             String email = sc.nextLine();
             System.out.println("Informe um telefone: ");
@@ -77,17 +81,18 @@ public class TelaFuncionario {
                     .cargo(cargo)
                     .salario(salario)
                     .build();
-            if (controlador.buscarFuncionario(cpf) != null) {
-                System.out.println("CPF já cadastrado");
+            controlador.cadastrarFuncionario(funcionario_novo);
+            if(controlador.buscarFuncionario(funcionario_novo.getCpf()) != null){
+                System.out.println("Funcionário cadastrado");
             }else{
-                controlador.cadastrarFuncionario(funcionario_novo);
-                System.out.println("Funcionário cadastrado com sucesso");
+                System.out.println("Funcionário não cadastrado!");
             }
         } catch (Exception e) {
             System.out.println("Erro ao cadastrar funcionario, favor inserir um valor, caso não tenha um salário informar '0'");
-            operacoesFuncionario();
+            return;
         }
     }
+
 
     public void atualizar() {
         try {
@@ -97,10 +102,9 @@ public class TelaFuncionario {
             if (funcionario == null) {
                 System.out.println("Funcionario não encontrado");
             } else {
-                System.out.println("Informe o nome: ");
+                System.out.println("*Informe o nome: ");
                 String nome = sc.nextLine();
-                System.out.println("Informe o CPF: ");
-                String novoCpf = sc.nextLine();
+                String novoCpf = cpf;
                 System.out.println("Informe o e-mail: ");
                 String email = sc.nextLine();
                 System.out.println("Informe o telefone: ");
@@ -127,7 +131,7 @@ public class TelaFuncionario {
             }
         } catch (Exception e) {
             System.out.println("Erro ao atualizar funcionário, favor inserir um valor, caso não tenha um salário informar '0'");
-            operacoesFuncionario();
+            return;
         }
     }
 
@@ -160,6 +164,7 @@ public class TelaFuncionario {
         } catch (Exception e) {
             System.out.println("Erro ao deletar funcionario");
             new LogMensagem().log("Erro ao deletar funcionario" + e);
+            return;
         }
     }
 
@@ -181,8 +186,7 @@ public class TelaFuncionario {
             if (salario != null) {
                 boolean flag = true;
                 while (flag) {
-                    System.out.println(
-                            "Deseja aplicar qual gratificao:\n1 - Insalubridade\n2 - Periculosidade\n3 - Adicional noturno\n4 - Finaliza gratificacao");
+                    System.out.println("Deseja aplicar qual gratificao:\n1 - Insalubridade\n2 - Periculosidade\n3 - Adicional noturno\n4 - Finaliza gratificacao");
                     String opcao = sc.nextLine();
                     switch (opcao) {
                         case "1":

@@ -1,4 +1,5 @@
 package br.edu.ifpe.FormularioDeCadastro.apresentacao;
+
 import java.util.List;
 import java.util.Scanner;
 import br.edu.ifpe.FormularioDeCadastro.entidades.Concrect.Cliente;
@@ -6,11 +7,9 @@ import br.edu.ifpe.FormularioDeCadastro.facade.Facade;
 import br.edu.ifpe.FormularioDeCadastro.logs.LogMensagem;
 import br.edu.ifpe.FormularioDeCadastro.negocio.ClienteBuilder;
 
-
 public class TelaCliente {
     static Scanner sc = new Scanner(System.in);
     Facade controlador = new Facade();
-    
 
     public void operacoesCliente() {
         while (true) {
@@ -46,10 +45,15 @@ public class TelaCliente {
     }
 
     public void cadastrar() {
-        System.out.println("Informe um nome: ");
+
+        System.out.println("*Informe um nome: ");
         String nome = sc.nextLine();
-        System.out.println("Informe um CPF: ");
+        System.out.println("*Informe um CPF: ");
         String cpf = sc.nextLine();
+        if (controlador.buscarCliente(cpf) != null) {
+            System.out.println("CPF já cadastrado");
+            return;
+        }
         System.out.println("Informe um email: ");
         String email = sc.nextLine();
         System.out.println("Informe um telefone: ");
@@ -61,16 +65,15 @@ public class TelaCliente {
                 .email(email)
                 .telefone(telefone)
                 .build();
-        if (controlador.buscarCliente(cpf) != null) {
-            System.out.println("CPF já cadastrado");
-        } else {
-            controlador.cadastrarCliente(cliente_novo);
-        }
-        if(controlador.buscarCliente(cliente_novo.getCpf()) == null || cliente_novo.getCpf().isEmpty()){
-            System.out.println("Erro ao cadastrar cliente");
-        }else{
+
+        controlador.cadastrarCliente(cliente_novo);
+        if (controlador.buscarCliente(cliente_novo.getCpf()) != null) {
             System.out.println("Cliente cadastrado com sucesso");
+        } else {
+            System.out.println("Erro ao cadastrar cliente");
+            return;
         }
+
     }
 
     public void atualizar() {
@@ -80,10 +83,9 @@ public class TelaCliente {
         if (cliente == null) {
             System.out.println("Cliente não encontrado");
         } else {
-            System.out.println("Informe o nome: ");
+            System.out.println("*Informe o nome: ");
             String nome = sc.nextLine();
-            System.out.println("Informe o CPF: ");
-            String novoCpf = sc.nextLine();
+            String novoCpf = cpf;
             System.out.println("Informe o e-mail: ");
             String email = sc.nextLine();
             System.out.println("Informe o telefone: ");
@@ -96,9 +98,9 @@ public class TelaCliente {
                     .build();
             controlador.deletarCliente(cpf);
             controlador.cadastrarCliente(cliente_novo);
-            if(controlador.buscarCliente(novoCpf) == null || cliente_novo.getCpf().isEmpty()){
+            if (controlador.buscarCliente(novoCpf) == null) {
                 System.out.println("Erro ao atualizar cliente");
-            }else{
+            } else {
                 System.out.println("Cliente atualizado com sucesso");
             }
         }
