@@ -17,7 +17,7 @@ public class FuncionarioBuilder {
 
     public FuncionarioBuilder cpf(String cpf) {
         String cpfFormatado;
-            if(cpf.length() == 14){
+            if(cpf.length()>11 & cpf.length() < 15){
                 String [] cpf_sep = cpf.split("[.-]");
                 cpfFormatado = cpf_sep[0]+cpf_sep[1]+cpf_sep[2]+cpf_sep[3];
                 this.cpf = cpfFormatado;
