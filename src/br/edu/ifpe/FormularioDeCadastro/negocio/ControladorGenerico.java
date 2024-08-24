@@ -31,7 +31,7 @@ public abstract class ControladorGenerico<T> implements IControlador<T> {
         int hash;
         if (cpf.length()>11 & cpf.length() < 15) {
             String[] cpf_sep = cpf.split("[.-]");
-            String cpfFormatado = cpf_sep[0] + cpf_sep[1] + cpf_sep[2] + cpf_sep[3];
+            String cpfFormatado = String.join("", cpf_sep);
             hash = cpfFormatado.hashCode();
         } else {
             hash = cpf.hashCode();
