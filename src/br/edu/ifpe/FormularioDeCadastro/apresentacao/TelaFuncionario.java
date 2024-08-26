@@ -214,6 +214,7 @@ public class TelaFuncionario {
                 }
 
                 System.out.println("Funcionário gratificado:");
+                System.out.println("CPF: " +funcionario.getCpf());
                 System.out.println("Nome: " + funcionario.getNome());
                 System.out.println("Novo salário: " + funcionario.getSalario());
                 System.out.println("Tipo(s) de gratificação aplicada(s): " + tipoGratificacao);
