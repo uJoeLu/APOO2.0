@@ -47,7 +47,7 @@ public class TelaFuncionario {
                     new LogMensagem().log("Fechando operacao funcionario");
                     return;
                 default:
-                    System.out.println("Opção inválida");
+                    System.out.println("Opção inválida, tente novamente!");
                     break;
             }
         }

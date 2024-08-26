@@ -37,7 +37,7 @@ public class TelaCliente {
                     new LogMensagem().log("Fechando operacao cliente");
                     return;
                 default:
-                    System.err.println("Opção inválida");
+                    System.err.println("Opção inválida, tente novamente");
                     break;
             }
         }
