@@ -21,7 +21,7 @@ public class TelaFuncionario {
     public void operacoesFuncionario() {
         while (true) {
             System.out.println(
-                    "\n1 - Cadastrar\n2 - Atualizar\n3 - Exibir\n4 - Deletar\n5 - Exibir lista de cadastros\n6 - gratificar\n7 - Menu inicial");
+                    "\n1 - Cadastrar\n2 - Atualizar\n3 - Exibir\n4 - Deletar\n5 - Exibir lista de cadastros\n6 - Gratificar\n7 - Menu inicial");
             String opcao = sc.nextLine();
             switch (opcao) {
                 case "1":
