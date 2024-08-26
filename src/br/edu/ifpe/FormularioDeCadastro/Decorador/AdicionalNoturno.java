@@ -10,5 +10,4 @@ public class AdicionalNoturno extends GratificaoDecoracao {
     public double getSalario() {
         return super.getSalario() * 1.20;
     }
-    
 }
