@@ -81,17 +81,17 @@ public class TelaFuncionario {
                     .salario(salario)
                     .build();
             controlador.cadastrarFuncionario(funcionario_novo);
-            if(controlador.buscarFuncionario(funcionario_novo.getCpf()) != null){
+            if (controlador.buscarFuncionario(funcionario_novo.getCpf()) != null) {
                 System.out.println("Funcionário cadastrado");
-            }else{
+            } else {
                 System.out.println("Funcionário não cadastrado!");
             }
         } catch (Exception e) {
-            System.out.println("Erro ao cadastrar funcionario, favor inserir um valor, caso não tenha um salário informar '0'");
+            System.out.println(
+                    "Erro ao cadastrar funcionario, favor inserir um valor, caso não tenha um salário informar '0'");
             return;
         }
     }
-
 
     public void atualizar() {
         try {
@@ -129,7 +129,8 @@ public class TelaFuncionario {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Erro ao atualizar funcionário, favor inserir um valor, caso não tenha um salário informar '0'");
+            System.out.println(
+                    "Erro ao atualizar funcionário, favor inserir um valor, caso não tenha um salário informar '0'");
             return;
         }
     }
@@ -177,39 +178,48 @@ public class TelaFuncionario {
     }
 
     public void gratificar() {
-        System.out.println("Digite o cpf do funcionario: ");
+        System.out.println("Digite o CPF do funcionário: ");
         String cpf = sc.nextLine();
         Funcionario funcionario = controlador.buscarFuncionario(cpf);
         if (funcionario != null) {
             IGratificacao salario = new GratificacaoBase(funcionario.getSalario());
             if (salario != null) {
                 boolean flag = true;
+                String tipoGratificacao = "";
                 while (flag) {
-                    System.out.println("Deseja aplicar qual gratificao:\n1 - Insalubridade\n2 - Periculosidade\n3 - Adicional noturno\n4 - Finaliza gratificacao");
+                    System.out.println(
+                            "Deseja aplicar qual gratificação:\n1 - Insalubridade\n2 - Periculosidade\n3 - Adicional noturno\n4 - Finalizar gratificação");
                     String opcao = sc.nextLine();
                     switch (opcao) {
                         case "1":
                             salario = factory.Insalubridade(salario);
+                            tipoGratificacao += "Insalubridade ";
                             break;
                         case "2":
                             salario = factory.Periculosidade(salario);
+                            tipoGratificacao += "Periculosidade ";
                             break;
                         case "3":
                             salario = factory.AdicionalNoturno(salario);
+                            tipoGratificacao += "Adicional noturno ";
                             break;
                         case "4":
                             funcionario.setSalario(salario.getSalario());
                             flag = false;
                             break;
                         default:
-                            System.out.println("Opção invalida");
+                            System.out.println("Opção inválida");
                             break;
                     }
                 }
+
+                System.out.println("Funcionário gratificado:");
+                System.out.println("Nome: " + funcionario.getNome());
+                System.out.println("Novo salário: " + funcionario.getSalario());
+                System.out.println("Tipo(s) de gratificação aplicada(s): " + tipoGratificacao);
             }
         } else {
-            System.out.println("Funcionario não encontrado");
+            System.out.println("Funcionário não encontrado");
         }
-
     }
 }
