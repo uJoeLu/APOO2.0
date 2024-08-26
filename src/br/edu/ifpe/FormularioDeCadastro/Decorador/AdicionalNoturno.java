@@ -8,7 +8,6 @@ public class AdicionalNoturno extends GratificaoDecoracao {
 
     @Override
     public double getSalario() {
-        
         return getSalario() * 1.20;
     }
     

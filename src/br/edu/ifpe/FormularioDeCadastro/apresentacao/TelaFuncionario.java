@@ -181,14 +181,11 @@ public class TelaFuncionario {
         System.out.println("Digite o CPF do funcionário: ");
         String cpf = sc.nextLine();
         Funcionario funcionario = controlador.buscarFuncionario(cpf);
-
         if (funcionario != null) {
-            
             if (funcionario.getSalario() == 0) {
                 System.out.println("Funcionário sem salário. Edite o funcionário e tente novamente.");
-                return; 
+                return;
             }
-
             try {
                 IGratificacao salario = new GratificacaoBase(funcionario.getSalario());
                 boolean flag = true;
@@ -225,7 +222,7 @@ public class TelaFuncionario {
                 System.out.println(e.getMessage());
             }
         } else {
-            System.out.println("Funcionário não encontrado");
+            System.out.println("Funcionário não encontrado, tente novamente");
         }
     }
 }
