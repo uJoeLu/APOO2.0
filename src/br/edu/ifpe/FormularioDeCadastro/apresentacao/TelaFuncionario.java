@@ -181,10 +181,16 @@ public class TelaFuncionario {
         System.out.println("Digite o CPF do funcionário: ");
         String cpf = sc.nextLine();
         Funcionario funcionario = controlador.buscarFuncionario(cpf);
+
         if (funcionario != null) {
+            
+            if (funcionario.getSalario() == 0) {
+                System.out.println("Funcionário sem salário. Edite o funcionário e tente novamente.");
+                return; 
+            }
+
             try {
                 IGratificacao salario = new GratificacaoBase(funcionario.getSalario());
-                StringBuilder tipoGratificacao = new StringBuilder();
                 boolean flag = true;
                 while (flag) {
                     System.out.println(
@@ -193,32 +199,25 @@ public class TelaFuncionario {
                     switch (opcao) {
                         case "1":
                             salario = factory.Insalubridade(salario);
-                            tipoGratificacao.append("Insalubridade, ");
                             break;
                         case "2":
                             salario = factory.Periculosidade(salario);
-                            tipoGratificacao.append("Periculosidade, ");
                             break;
                         case "3":
                             salario = factory.AdicionalNoturno(salario);
-                            tipoGratificacao.append("Adicional Noturno, ");
                             break;
                         case "4":
                             funcionario.setSalario(salario.getSalario());
                             flag = false;
-
-                            if (tipoGratificacao.length() > 0) {
-                                tipoGratificacao.setLength(tipoGratificacao.length() - 2);
-                            }
                             System.out.println("Gratificação aplicada com sucesso.");
                             System.out.println("Funcionário gratificado:");
                             System.out.println("CPF: " + funcionario.getCpf());
                             System.out.println("Nome: " + funcionario.getNome());
                             System.out.println("Novo salário: " + funcionario.getSalario());
-                            System.out.println("Tipo(s) de gratificação aplicada(s): " + tipoGratificacao.toString());
+
                             break;
                         default:
-                            System.out.println("Opção inválida, tente novamente");
+                            System.out.println("Opção inválida");
                             break;
                     }
                 }
@@ -229,5 +228,4 @@ public class TelaFuncionario {
             System.out.println("Funcionário não encontrado");
         }
     }
-
 }
