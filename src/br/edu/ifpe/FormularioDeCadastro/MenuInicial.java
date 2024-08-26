@@ -44,7 +44,7 @@ public class MenuInicial {
                         flag = false;
                         break;
                     default:
-                        System.out.println("Opção inválida, tente novamente!4");
+                        System.out.println("Opção inválida, tente novamente!");
                         break;
                 }
             
