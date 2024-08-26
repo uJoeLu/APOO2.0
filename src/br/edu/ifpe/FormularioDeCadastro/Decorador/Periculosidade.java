@@ -9,7 +9,7 @@ public class Periculosidade extends GratificaoDecoracao {
 
     @Override
     public double getSalario() {
-        return (super.getSalario() * 0.30)+super.getSalario();
+        return super.getSalario() * 1.30;
     }
     
 }

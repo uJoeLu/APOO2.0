@@ -8,7 +8,7 @@ public class AdicionalNoturno extends GratificaoDecoracao {
 
     @Override
     public double getSalario() {
-        return (super.getSalario()*0.20)+super.getSalario();
+        return super.getSalario() * 1.20;
     }
     
 

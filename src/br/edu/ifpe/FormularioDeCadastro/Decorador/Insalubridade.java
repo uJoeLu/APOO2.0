@@ -9,7 +9,7 @@ public class Insalubridade extends GratificaoDecoracao {
 
     @Override
     public double getSalario() {
-        return (super.getSalario() * 0.40)+super.getSalario();
+        return super.getSalario() * 1.40;
     }
     
 }
